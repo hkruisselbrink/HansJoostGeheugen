@@ -1,0 +1,340 @@
+# depslib dependency file v1.0
+1343240962 source:e:\school\codeblocks\besturingssystemen\memadmin\allocator.cc
+	"main.h"
+	"Allocator.h"
+
+1343240962 .h"
+
+1348757514 e:\school\codeblocks\besturingssystemen\memadmin\main.h
+	<list>
+	<iostream>
+	"asserts.h"
+	"Area.h"
+	"Allocator.h"
+
+1348734792 e:\school\codeblocks\besturingssystemen\memadmin\asserts.h
+	<stdexcept>
+
+1348734792 >
+
+1348757524 e:\school\codeblocks\besturingssystemen\memadmin\area.h
+	<iostream>
+	"asserts.h"
+
+1343240962 "
+
+1348757518 e:\school\codeblocks\besturingssystemen\memadmin\allocator.h
+	"Area.h"
+
+1348735010 
+
+1343240962 source:/home/akkersdi/codeblocks/memadmin/Allocator.cc
+	"main.h"
+	"Allocator.h"
+
+1343240962 /home/akkersdi/codeblocks/memadmin/main.h
+	<list>
+	<iostream>
+	"asserts.h"
+	"Area.h"
+	"Allocator.h"
+
+1348734792 /home/akkersdi/codeblocks/memadmin/asserts.h
+	<stdexcept>
+
+1343240962 /home/akkersdi/codeblocks/memadmin/Area.h
+	<iostream>
+	"asserts.h"
+
+1348735010 /home/akkersdi/codeblocks/memadmin/Allocator.h
+	"Area.h"
+
+1353712307 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Allocator.cc
+	"main.h"
+	"Allocator.h"
+
+1353710509 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/main.h
+	<list>
+	<iostream>
+	"asserts.h"
+	"Area.h"
+	"Allocator.h"
+
+1353525713 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/asserts.h
+	<stdexcept>
+
+1353709014 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Area.h
+	<iostream>
+	"asserts.h"
+
+1353710070 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Allocator.h
+	"Area.h"
+
+1353714463 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Application.cc
+	<cstdlib>
+	"ansi.h"
+	"main.h"
+	"Stopwatch.h"
+	"Application.h"
+
+1353525688 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/ansi.h
+	"common.h"
+
+1353710224 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/common.h
+
+1353711098 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Stopwatch.h
+	<sys/resource.h>
+	<sys/times.h>
+	<times.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+
+1353710135 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Application.h
+	"Allocator.h"
+	"Area.h"
+
+1353712667 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Area.cc
+	"asserts.h"
+	"Area.h"
+
+1354109460 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/FirstFit.cc
+	"FirstFit.h"
+
+1353709757 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/FirstFit.h
+	"Fitter.h"
+
+1353710460 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Fitter.h
+	"main.h"
+	"Allocator.h"
+
+1354109525 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/FirstFit2.cc
+	"FirstFit2.h"
+
+1353710372 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/FirstFit2.h
+	"FirstFit.h"
+
+1353713003 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Fitter.cc
+	<cmath>
+	"ansi.h"
+	"Fitter.h"
+
+1354109560 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/NextFit.cc
+	"main.h"
+	"NextFit.h"
+
+1353710646 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/NextFit.h
+	"Fitter.h"
+
+1353713477 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/NextFit2.cc
+	"NextFit2.h"
+
+1353710531 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/NextFit2.h
+	"NextFit.h"
+
+1353713805 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/RandomFit.cc
+	"main.h"
+	"RandomFit.h"
+	<cstdlib>
+
+1353710711 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/RandomFit.h
+	"Allocator.h"
+
+1353714003 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/Stopwatch.cc
+	<iostream>
+	<cstdio>
+	"asserts.h"
+	"Stopwatch.h"
+	<unistd.h>
+	<time.h>
+
+1353712672 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/asserts.cc
+	"asserts.h"
+	"ansi.h"
+	<cstdio>
+
+1354044770 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/main.cc
+	<ctime>
+	<csignal>
+	<cstdlib>
+	<getopt.h>
+	<process.h>
+	"ansi.h"
+	"main.h"
+	"RandomFit.h"
+	"FirstFit.h"
+	"FirstFit2.h"
+	"NextFit.h"
+	"NextFit2.h"
+	<windows.h>
+	"Application.h"
+
+1354093507 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1354093592 /home/akkersdi/SCHOOL/KW2.3/BS_OS/opdrachten/memadmin/unix_error.h
+	<stdexcept>
+	<string>
+
+1382611980 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Allocator.cc
+	"main.h"
+	"Allocator.h"
+
+1353710509 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/main.h
+	<list>
+	<iostream>
+	"asserts.h"
+	"Area.h"
+	"Allocator.h"
+
+1353525713 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/asserts.h
+	<stdexcept>
+
+1353709014 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Area.h
+	<iostream>
+	"asserts.h"
+
+1382611846 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Allocator.h
+	"Area.h"
+
+1382610402 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Application.cc
+	<cstdlib>
+	"ansi.h"
+	"main.h"
+	"Stopwatch.h"
+	"Application.h"
+
+1353525688 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/ansi.h
+	"common.h"
+
+1353710224 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/common.h
+
+1353711098 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Stopwatch.h
+	<sys/resource.h>
+	<sys/times.h>
+	<times.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+
+1353710135 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Application.h
+	"Allocator.h"
+	"Area.h"
+
+1353712667 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Area.cc
+	"asserts.h"
+	"Area.h"
+
+1357896927 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/FirstFit.cc
+	"FirstFit.h"
+
+1357897531 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/FirstFit.h
+	"Fitter.h"
+
+1353710460 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Fitter.h
+	"main.h"
+	"Allocator.h"
+
+1354109817 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/FirstFit2.cc
+	"FirstFit2.h"
+
+1357897539 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/FirstFit2.h
+	"FirstFit.h"
+
+1353713003 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Fitter.cc
+	<cmath>
+	"ansi.h"
+	"Fitter.h"
+
+1354109837 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/NextFit.cc
+	"main.h"
+	"NextFit.h"
+
+1382611935 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/NextFit.h
+	"Fitter.h"
+
+1354109848 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/NextFit2.cc
+	"NextFit2.h"
+
+1357897512 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/NextFit2.h
+	"NextFit.h"
+
+1353713805 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/RandomFit.cc
+	"main.h"
+	"RandomFit.h"
+	<cstdlib>
+
+1353710711 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/RandomFit.h
+	"Allocator.h"
+
+1353714003 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/Stopwatch.cc
+	<iostream>
+	<cstdio>
+	"asserts.h"
+	"Stopwatch.h"
+	<unistd.h>
+	<time.h>
+
+1353712672 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/asserts.cc
+	"asserts.h"
+	"ansi.h"
+	<cstdio>
+
+1382611293 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/main.cc
+	<ctime>
+	<csignal>
+	<cstdlib>
+	<unistd.h>
+	<getopt.h>
+	<process.h>
+	"ansi.h"
+	"main.h"
+	"RandomFit.h"
+	"FirstFit.h"
+	"FirstFit2.h"
+	"NextFit.h"
+	"NextFit2.h"
+	"BestFit.h"
+	"BestFit2.h"
+	"WorstFit.h"
+	"WorstFit2.h"
+	<windows.h>
+	"Application.h"
+
+1382614430 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/BestFit.h
+	"FirstFit.h"
+
+1357907015 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/BestFit2.h
+	"BestFit.h"
+
+1357907029 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/WorstFit.h
+	"FirstFit.h"
+
+1357907035 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/WorstFit2.h
+	"WorstFit.h"
+
+1354093507 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1354093592 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/unix_error.h
+	<stdexcept>
+	<string>
+
+1353415857 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/BestFit.cc
+	"BestFit.h"
+
+1353415872 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/BestFit2.cc
+	"BestFit2.h"
+
+1353416009 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/WorstFit.cc
+	"WorstFit.h"
+
+1353416021 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/WorstFit2.cc
+	"WorstFit2.h"
+

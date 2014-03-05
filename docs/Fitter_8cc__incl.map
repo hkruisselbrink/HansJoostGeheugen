@@ -1,0 +1,10 @@
+<map id="Fitter.cc" name="Fitter.cc">
+<area shape="rect" id="node5" href="$ansi_8h.html" title="Defines various ansi color&#45;code strings." alt="" coords="46,229,103,256"/>
+<area shape="rect" id="node9" href="$Fitter_8h.html" title="The baseclass for all &quot;fit&quot; algorithms." alt="" coords="195,80,257,107"/>
+<area shape="rect" id="node7" href="$common_8h.html" title="This file contains definitions that are used at many places." alt="" coords="21,304,104,331"/>
+<area shape="rect" id="node11" href="$main_8h.html" title="The main function where the program starts." alt="" coords="196,155,257,181"/>
+<area shape="rect" id="node28" href="$Allocator_8h.html" title="The Allocator interface." alt="" coords="345,229,428,256"/>
+<area shape="rect" id="node17" href="$asserts_8h.html" title="This file defines various macro&#39;s that can be used as checks in your program." alt="" coords="251,379,327,405"/>
+<area shape="rect" id="node24" href="$Area_8h.html" title="The memory area descriptor." alt="" coords="209,304,268,331"/>
+<area shape="rect" id="node19" href="$assert__error_8h.html" title="This file defines the assert_error exception class." alt="" coords="238,453,340,480"/>
+</map>
