@@ -1,4 +1,3 @@
 HansJoostGeheugen
 =================
 
-Besturingssystemen
