@@ -338,3 +338,148 @@
 1353416021 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/memadmin/WorstFit2.cc
 	"WorstFit2.h"
 
+1391268094 source:c:\users\hans\documents\hansjoostgeheugen\allocator.cc
+	"main.h"
+	"Allocator.h"
+
+1391268068 c:\users\hans\documents\hansjoostgeheugen\main.h
+	<list>
+	<iostream>
+	"asserts.h"
+	"ansi.h"
+	"Area.h"
+	"Allocator.h"
+
+1391268164 c:\users\hans\documents\hansjoostgeheugen\asserts.h
+	"assert_error.h"
+
+1391268146 c:\users\hans\documents\hansjoostgeheugen\assert_error.h
+	<stdexcept>
+
+1353525688 c:\users\hans\documents\hansjoostgeheugen\ansi.h
+	"common.h"
+
+1353710224 c:\users\hans\documents\hansjoostgeheugen\common.h
+
+1391268054 c:\users\hans\documents\hansjoostgeheugen\area.h
+	<iostream>
+	"asserts.h"
+
+1391268048 c:\users\hans\documents\hansjoostgeheugen\allocator.h
+	"Area.h"
+
+1391268094 source:c:\users\hans\documents\hansjoostgeheugen\application.cc
+	<cstdlib>
+	"main.h"
+	"Stopwatch.h"
+	"Application.h"
+
+1394613192 c:\users\hans\documents\hansjoostgeheugen\stopwatch.h
+	<sys/resource.h>
+	<sys/times.h>
+	<times.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+
+1391268052 c:\users\hans\documents\hansjoostgeheugen\application.h
+	"Allocator.h"
+	"Area.h"
+
+1391268096 source:c:\users\hans\documents\hansjoostgeheugen\area.cc
+	"asserts.h"
+	"Area.h"
+
+1384541154 source:c:\users\hans\documents\hansjoostgeheugen\assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1394617231 source:c:\users\hans\documents\hansjoostgeheugen\bestfit.cc
+	"main.h"
+	"BestFit.h"
+
+1394613882 c:\users\hans\documents\hansjoostgeheugen\bestfit.h
+	"Fitter.h"
+
+1391268068 c:\users\hans\documents\hansjoostgeheugen\fitter.h
+	"main.h"
+	"Allocator.h"
+
+1391268106 source:c:\users\hans\documents\hansjoostgeheugen\firstfit.cc
+	"FirstFit.h"
+	"ansi.h"
+
+1391268066 c:\users\hans\documents\hansjoostgeheugen\firstfit.h
+	"Fitter.h"
+
+1391268104 source:c:\users\hans\documents\hansjoostgeheugen\firstfit2.cc
+	"FirstFit2.h"
+
+1391268064 c:\users\hans\documents\hansjoostgeheugen\firstfit2.h
+	"FirstFit.h"
+
+1391268106 source:c:\users\hans\documents\hansjoostgeheugen\fitter.cc
+	<cmath>
+	"ansi.h"
+	"Fitter.h"
+
+1394617002 source:c:\users\hans\documents\hansjoostgeheugen\main.cc
+	<ctime>
+	<csignal>
+	<cstdlib>
+	<getopt.h>
+	<unistd.h>
+	<process.h>
+	"ansi.h"
+	"main.h"
+	"RandomFit.h"
+	"FirstFit.h"
+	"FirstFit2.h"
+	"NextFit.h"
+	"NextFit2.h"
+	"BestFit.h"
+	<windows.h>
+	"Application.h"
+
+1391268074 c:\users\hans\documents\hansjoostgeheugen\randomfit.h
+	"Allocator.h"
+
+1394010959 c:\users\hans\documents\hansjoostgeheugen\nextfit.h
+	"Fitter.h"
+
+1391268070 c:\users\hans\documents\hansjoostgeheugen\nextfit2.h
+	"NextFit.h"
+
+1394617058 source:c:\users\hans\documents\hansjoostgeheugen\nextfit.cc
+	"main.h"
+	"NextFit.h"
+	"ansi.h"
+
+1391268110 source:c:\users\hans\documents\hansjoostgeheugen\nextfit2.cc
+	"NextFit2.h"
+
+1391268114 source:c:\users\hans\documents\hansjoostgeheugen\randomfit.cc
+	"main.h"
+	"RandomFit.h"
+	<cstdlib>
+
+1391268116 source:c:\users\hans\documents\hansjoostgeheugen\stopwatch.cc
+	<iostream>
+	<cstdio>
+	"asserts.h"
+	"Stopwatch.h"
+	<unistd.h>
+	<time.h>
+
+1354093508 source:c:\users\hans\documents\hansjoostgeheugen\unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1354093592 c:\users\hans\documents\hansjoostgeheugen\unix_error.h
+	<stdexcept>
+	<string>
+

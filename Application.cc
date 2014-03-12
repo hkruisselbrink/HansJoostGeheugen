@@ -290,7 +290,9 @@ void	Application::testing()
 					// Vraag om geheugen
 					ap = beheerder->alloc(size / 2);	// dit moet altijd kunnen
 					{
+					cerr<<"print 1"<<endl;
 					Area *bp = new Area(*ap);			// dupliceer ap
+					cerr<<"print 2"<<endl;
 					beheerder->free(ap);				// weer vrij geven
 					beheerder->free(bp);				// en nog eens vrij geven
 					// NB This test may cause a memory leak if 'beheerder->free' did not delete 'bp'

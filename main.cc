@@ -28,7 +28,7 @@
 #include "NextFit2.h"	// de NextFit2 allocator (eager version)
 // .... voeg hier je eigen variant(en) toe ....
 // bijvoorbeeld:
-//#include "BestFit.h"		// pas de naam aan aan jouw versie
+#include "BestFit.h"		// pas de naam aan aan jouw versie
 //#include "BestFit2.h"		// pas de naam aan aan jouw versie
 //#include "WorstFit.h"		// pas de naam aan aan jouw versie
 //#include "WorstFit2.h"		// pas de naam aan aan jouw versie
@@ -74,7 +74,7 @@ void	tellOptions(const char *progname)
 	cout << "\t-F\t\tuse the first fit allocator (eager)\n";
 	cout << "\t-n\t\tuse the next fit allocator (lazy)\n";
 	cout << "\t-N\t\tuse the next fit allocator (eager)\n";
-	//cout << "\t-b\t\tuse the best fit allocator (lazy)\n";
+	cout << "\t-b\t\tuse the best fit allocator (lazy)\n";
 	//cout << "\t-B\t\tuse the best fit allocator (eager)\n";
 	//cout << "\t-w\t\tuse the worst fit allocator (lazy)\n";
 	//cout << "\t-W\t\tuse the worst fit allocator (eager)\n";
@@ -91,7 +91,7 @@ void	tellOptions(const char *progname)
 /// Kan/zal diverse globale variabelen veranderen !
 void	doOptions(int argc, char *argv[])
 {
-	char  options[] = "s:a:tvcrfFnN"; // De opties die we willen herkennen
+	char  options[] = "s:a:tvcrfFnNb"; // De opties die we willen herkennen
 	//
 	// Als je algoritmes toevoegt dan moet je de string hierboven uitbreiden.
 	// (Vergeet niet tellOptions ook aan te passen)
@@ -169,11 +169,11 @@ void	doOptions(int argc, char *argv[])
 				require(beheerder == 0);
 				beheerder = new NextFit2(cflag);
 				break;
-			/*
 			case 'b': // -b = BestFit allocator gevraagd
 				require(beheerder == 0);
 				beheerder = new BestFit(cflag);
 				break;
+            /*
 			case 'B': // -B = BestFit2 allocator gevraagd
 				require(beheerder == 0);
 				beheerder = new BestFit2(cflag);

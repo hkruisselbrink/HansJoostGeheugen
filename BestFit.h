@@ -1,12 +1,13 @@
 #ifndef BESTFIT_H
 #define BESTFIT_H
 
+#include "Fitter.h"
 
 class BestFit : public Fitter
 {
     public:
         BestFit(bool cflag, const char *type = "BestFit (lazy)")
-        : Fitted(cflag, type) {}
+        : Fitter(cflag, type), cursor(areas.begin()) {}
 
         ~BestFit();
 
@@ -26,7 +27,10 @@ class BestFit : public Fitter
         /// For debugging this function shows the free area list
         virtual	 void	dump();
 
+        ALiterator	  cursor;		///< remembers where we stopped searching last time
+
         Area 	*searcher(int);
+        virtual	 bool	  reclaim();
 
         virtual  void	updateStats();	///< update resource map statistics
 };
