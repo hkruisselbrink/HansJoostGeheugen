@@ -1,0 +1,25 @@
+<map id="assert_error.h" name="assert_error.h">
+<area shape="rect" id="node3" href="$asserts_8h.html" title="This file defines various macro&#39;s that can be used as checks in your program." alt="" coords="494,80,570,107"/>
+<area shape="rect" id="node62" href="$assert__error_8cc.html" title="This file implements the assert_error exception class." alt="" coords="595,80,704,107"/>
+<area shape="rect" id="node5" href="$main_8h.html" title="The main function where the program starts." alt="" coords="411,304,472,331"/>
+<area shape="rect" id="node40" href="$Area_8h.html" title="The memory area descriptor." alt="" coords="392,155,451,181"/>
+<area shape="rect" id="node57" href="$Area_8cc.html" title="De implementatie van Area." alt="" coords="459,229,526,256"/>
+<area shape="rect" id="node60" href="$Stopwatch_8cc.html" title="De implementatie van Stopwatch." alt="" coords="601,155,703,181"/>
+<area shape="rect" id="node7" href="$Allocator_8cc.html" title="De implementatie van Allocator." alt="" coords="278,379,368,405"/>
+<area shape="rect" id="node9" href="$Application_8cc.html" title="De implementatie van Application." alt="" coords="150,379,254,405"/>
+<area shape="rect" id="node11" href="$Fitter_8h.html" title="The baseclass for all &quot;fit&quot; algorithms." alt="" coords="393,379,455,405"/>
+<area shape="rect" id="node21" href="$main_8cc.html" title="Het hoofdprogramma." alt="" coords="264,603,331,629"/>
+<area shape="rect" id="node34" href="$NextFit_8cc.html" title="De implementatie van NextFit." alt="" coords="455,528,538,555"/>
+<area shape="rect" id="node38" href="$RandomFit_8cc.html" title="De implementatie van RandomFit." alt="" coords="598,379,702,405"/>
+<area shape="rect" id="node13" href="$FirstFit_8h.html" title="The class that implements the lazy version of the FirstFit algorithm." alt="" coords="152,453,227,480"/>
+<area shape="rect" id="node24" href="$Fitter_8cc.html" title="De implementatie van de Fitter baseclass." alt="" coords="288,453,358,480"/>
+<area shape="rect" id="node26" href="$NextFit_8h.html" title="The class that implements the lazy version of the NextFit algorithm." alt="" coords="382,453,458,480"/>
+<area shape="rect" id="node15" href="$FirstFit_8cc.html" title="De implementatie van FirstFit." alt="" coords="192,528,272,555"/>
+<area shape="rect" id="node17" href="$FirstFit2_8h.html" title="The class that implements the eager version of the FirstFit algorithm." alt="" coords="34,528,115,555"/>
+<area shape="rect" id="node19" href="$FirstFit2_8cc.html" title="De implementatie van FirstFit2." alt="" coords="31,603,119,629"/>
+<area shape="rect" id="node29" href="$NextFit2_8h.html" title="The class that implements the eager version of the NextFit algorithm." alt="" coords="348,528,431,555"/>
+<area shape="rect" id="node32" href="$NextFit2_8cc.html" title="De implementatie van NextFit2." alt="" coords="356,603,447,629"/>
+<area shape="rect" id="node43" href="$Allocator_8h.html" title="The Allocator interface." alt="" coords="300,229,383,256"/>
+<area shape="rect" id="node47" href="$Application_8h.html" title="The Application class." alt="" coords="170,304,267,331"/>
+<area shape="rect" id="node52" href="$RandomFit_8h.html" title="The class that implements a dummy RandomFit algorithm." alt="" coords="601,304,698,331"/>
+</map>

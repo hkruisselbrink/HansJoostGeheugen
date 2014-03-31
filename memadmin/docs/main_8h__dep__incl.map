@@ -1,0 +1,16 @@
+<map id="main.h" name="main.h">
+<area shape="rect" id="node3" href="$Allocator_8cc.html" title="De implementatie van Allocator." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node5" href="$Application_8cc.html" title="De implementatie van Application." alt="" coords="120,80,224,107"/>
+<area shape="rect" id="node7" href="$Fitter_8h.html" title="The baseclass for all &quot;fit&quot; algorithms." alt="" coords="430,80,492,107"/>
+<area shape="rect" id="node17" href="$main_8cc.html" title="Het hoofdprogramma." alt="" coords="490,304,557,331"/>
+<area shape="rect" id="node30" href="$NextFit_8cc.html" title="De implementatie van NextFit." alt="" coords="719,229,801,256"/>
+<area shape="rect" id="node34" href="$RandomFit_8cc.html" title="De implementatie van RandomFit." alt="" coords="720,80,824,107"/>
+<area shape="rect" id="node9" href="$FirstFit_8h.html" title="The class that implements the lazy version of the FirstFit algorithm." alt="" coords="375,155,449,181"/>
+<area shape="rect" id="node20" href="$Fitter_8cc.html" title="De implementatie van de Fitter baseclass." alt="" coords="474,155,544,181"/>
+<area shape="rect" id="node22" href="$NextFit_8h.html" title="The class that implements the lazy version of the NextFit algorithm." alt="" coords="569,155,644,181"/>
+<area shape="rect" id="node11" href="$FirstFit_8cc.html" title="De implementatie van FirstFit." alt="" coords="405,229,485,256"/>
+<area shape="rect" id="node13" href="$FirstFit2_8h.html" title="The class that implements the eager version of the FirstFit algorithm." alt="" coords="299,229,380,256"/>
+<area shape="rect" id="node15" href="$FirstFit2_8cc.html" title="De implementatie van FirstFit2." alt="" coords="296,304,384,331"/>
+<area shape="rect" id="node25" href="$NextFit2_8h.html" title="The class that implements the eager version of the NextFit algorithm." alt="" coords="612,229,695,256"/>
+<area shape="rect" id="node28" href="$NextFit2_8cc.html" title="De implementatie van NextFit2." alt="" coords="608,304,699,331"/>
+</map>

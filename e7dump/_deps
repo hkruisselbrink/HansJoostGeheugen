@@ -1,0 +1,5 @@
+unix_error.o: unix_error.cc ansi.h common.h unix_error.h
+Device.o: Device.cc asserts.h assert_error.h unix_error.h Block.h \
+ e7types.h e7const.h Device.h
+Block.o: Block.cc asserts.h assert_error.h Block.h e7types.h e7const.h
+assert_error.o: assert_error.cc assert_error.h ansi.h common.h

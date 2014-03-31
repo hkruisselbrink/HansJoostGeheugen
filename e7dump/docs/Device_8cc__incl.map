@@ -1,0 +1,9 @@
+<map id="Device.cc" name="Device.cc">
+<area shape="rect" id="node3" href="$asserts_8h.html" title="This file defines various macro&#39;s that can be used as checks in your program." alt="" coords="18,80,93,107"/>
+<area shape="rect" id="node9" href="$unix__error_8h.html" title="The declaration of the unix_error exception class." alt="" coords="119,80,209,107"/>
+<area shape="rect" id="node22" href="$Block_8h.html" title="Definition of class Block." alt="" coords="284,80,351,107"/>
+<area shape="rect" id="node27" href="$e7const_8h.html" title="Fundamental constants of the hardware – cannot be changed easily." alt="" coords="262,155,340,181"/>
+<area shape="rect" id="node29" href="$Device_8h.html" title="Definition of the Device class." alt="" coords="375,80,449,107"/>
+<area shape="rect" id="node5" href="$assert__error_8h.html" title="This file defines the assert_error exception class." alt="" coords="5,155,107,181"/>
+<area shape="rect" id="node25" href="$e7types_8h.html" title="Supplies the platform dependent mappings from logical to physical types." alt="" coords="365,155,443,181"/>
+</map>

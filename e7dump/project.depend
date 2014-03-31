@@ -1,0 +1,477 @@
+# depslib dependency file v1.0
+1343326303 source:/home/akkersdi/workspace/e7dump/asserts.cc
+	"asserts.h"
+	<cstdio>
+	"ansi.h"
+
+1343483817 
+
+1343336233 /home/akkersdi/workspace/e7dump/asserts.h
+	<stdexcept>
+
+1349186985 >
+
+1343315996 /home/akkersdi/workspace/e7dump/ansi.h
+
+1343316367 source:/home/akkersdi/workspace/e7dump/e7convert.cc
+	"e7convert.h"
+
+1343316367 .h"
+
+1343316456 /home/akkersdi/workspace/e7dump/e7convert.h
+	<string>
+
+1343316346 source:/home/akkersdi/workspace/e7dump/l3tol.cc
+	<endian.h>
+	"l3tol.h"
+
+1343316014 /home/akkersdi/workspace/e7dump/l3tol.h
+	"e7types.h"
+
+1343488888 "
+
+1343329996 /home/akkersdi/workspace/e7dump/e7types.h
+
+1343325915 source:/home/akkersdi/workspace/e7dump/Block.cc
+	"common.h"
+	<endian.h>
+	"Block.h"
+
+1343336356 /home/akkersdi/workspace/e7dump/Block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+
+1343334118 /home/akkersdi/workspace/e7dump/e7const.h
+
+1343331161 source:/home/akkersdi/workspace/e7dump/tester.cc
+	"common.h"
+	<cstdio>
+	<iostream>
+	"e7const.h"
+	"e7filsys.h"
+	"e7ino.h"
+	"Device.h"
+	"Block.h"
+
+1343334351 /home/akkersdi/workspace/e7dump/e7filsys.h
+	"e7types.h"
+
+1343332652 /home/akkersdi/workspace/e7dump/e7ino.h
+	"e7types.h"
+
+1343332596 /home/akkersdi/workspace/e7dump/common.h
+	"asserts.h"
+	"unix_error.h"
+
+1349186967 r.h"
+
+1343332809 /home/akkersdi/workspace/e7dump/unix_error.h
+	<stdexcept>
+	<string>
+
+1343338182 source:/home/akkersdi/workspace/e7dump/Device.cc
+	"common.h"
+	"Device.h"
+	<fcntl.h>
+	<sys/stat.h>
+	<cstdio>
+
+1343338169 /home/akkersdi/workspace/e7dump/Device.h
+	<map>
+	"Block.h"
+
+1343334016 source:/home/akkersdi/workspace/e7dump/unix_error.cc
+	<string.h>
+	<errno.h>
+	<string>
+	<stdexcept>
+	"ansi.h"
+	"unix_error.h"
+
+1343332654 source:/home/akkersdi/workspace/e7dump/OpenFile.cc
+	"common.h"
+	"OpenFile.h"
+
+1343488888 h"
+
+1343331834 /home/akkersdi/workspace/e7dump/OpenFile.h
+	"Inode.h"
+
+1343331878 /home/akkersdi/workspace/e7dump/Inode.h
+	"e7types.h"
+
+1343332267 source:/home/akkersdi/workspace/e7dump/Inode.cc
+	"common.h"
+	"Inode.h"
+
+1343334881 source:/home/akkersdi/workspace/e7dump/voorbeeld.cc
+	"common.h"
+	<cstdio>
+	<iostream>
+	"Device.h"
+	"Block.h"
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+
+1343334107 /home/akkersdi/workspace/e7dump/e7fblk.h
+	"e7types.h"
+	"e7filsys.h"
+
+1343334833 /home/akkersdi/workspace/e7dump/e7dir.h
+	"e7types.h"
+
+1343332267 source:/home/akkersdi/codeblocks/e7dump/Inode.cc
+	"common.h"
+	"Inode.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/common.h
+	<cstddef>
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+
+1343488800 /home/akkersdi/codeblocks/e7dump/asserts.h
+	<stdexcept>
+
+1343488887 /home/akkersdi/codeblocks/e7dump/unix_error.h
+	<stdexcept>
+	<string>
+
+1343331878 /home/akkersdi/codeblocks/e7dump/Inode.h
+	"e7types.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/e7types.h
+
+1343397865 source:/home/akkersdi/codeblocks/e7dump/OpenFile.cc
+	"common.h"
+	"OpenFile.h"
+
+1343397865 /home/akkersdi/codeblocks/e7dump/OpenFile.h
+	"Inode.h"
+
+1343397865 source:/home/akkersdi/codeblocks/e7dump/asserts.cc
+	"asserts.h"
+	<cstdio>
+	"ansi.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/ansi.h
+
+1343429734 source:/home/akkersdi/codeblocks/e7dump/voorbeeld.cc
+	"common.h"
+	<cstdio>
+	<iostream>
+	<cstddef>
+	"e7types.h"
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+	"Device.h"
+	"Block.h"
+
+1343488812 /home/akkersdi/codeblocks/e7dump/Device.h
+	<map>
+	"Block.h"
+
+1343488806 /home/akkersdi/codeblocks/e7dump/Block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/e7const.h
+
+1343488887 /home/akkersdi/codeblocks/e7dump/e7filsys.h
+	"e7types.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/e7fblk.h
+	"e7types.h"
+	"e7filsys.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/e7ino.h
+	"e7types.h"
+
+1343488887 /home/akkersdi/codeblocks/e7dump/e7dir.h
+	"e7types.h"
+
+1343420300 source:/home/akkersdi/codeblocks/e7dump/Block.cc
+	"common.h"
+	<endian.h>
+	"Block.h"
+
+1343487884 source:/home/akkersdi/codeblocks/e7dump/Device.cc
+	"common.h"
+	"Device.h"
+	<fcntl.h>
+	<sys/stat.h>
+	<cstdio>
+
+1343397865 source:/home/akkersdi/codeblocks/e7dump/unix_error.cc
+	<string.h>
+	<errno.h>
+	<string>
+	<stdexcept>
+	"ansi.h"
+	"unix_error.h"
+
+1343487986 source:/home/akkersdi/codeblocks/e7dump/convertor.cc
+	"common.h"
+	<cstdio>
+	<iostream>
+	<cstddef>
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+	"Device.h"
+	"Block.h"
+
+1343483893 source:/home/akkersdi/codeblocks/e7dump/Superblock.cc
+	<cstdio>
+	"common.h"
+	"Superblock.h"
+	"Block.h"
+
+1343483817 /home/akkersdi/codeblocks/e7dump/Superblock.h
+	"e7types.h"
+	"e7filsys.h"
+	"Device.h"
+
+1349186692 source:e:\school\codeblocks\besturingssystemen\e7dump\device.cc
+	"common.h"
+	"Device.h"
+	<fcntl.h>
+	<sys/stat.h>
+	<cstdio>
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\common.h
+	<cstddef>
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\ansi.h
+
+1349186985 e:\school\codeblocks\besturingssystemen\e7dump\asserts.h
+	<stdexcept>
+
+1343759068 e:\school\codeblocks\besturingssystemen\e7dump\unix_error.h
+	<stdexcept>
+	<string>
+
+1349187073 e:\school\codeblocks\besturingssystemen\e7dump\device.h
+	<map>
+	"Block.h"
+
+1349186353 e:\school\codeblocks\besturingssystemen\e7dump\block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\e7types.h
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\e7const.h
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\e7filsys.h
+	"e7types.h"
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\e7fblk.h
+	"e7types.h"
+	"e7filsys.h"
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\e7ino.h
+	"e7types.h"
+
+1343488888 e:\school\codeblocks\besturingssystemen\e7dump\e7dir.h
+	"e7types.h"
+
+1343397866 source:e:\school\codeblocks\besturingssystemen\e7dump\asserts.cc
+	"asserts.h"
+	<cstdio>
+	"ansi.h"
+
+1349186967 source:e:\school\codeblocks\besturingssystemen\e7dump\unix_error.cc
+	<string.h>
+	<errno.h>
+	<string>
+	<stdexcept>
+	"ansi.h"
+	"unix_error.h"
+
+1353014065 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/Block.cc
+	"common.h"
+	"asserts.h"
+	<endian.h>
+	"Block.h"
+
+1353014138 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/common.h
+
+1352237945 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/ansi.h
+	"common.h"
+
+1352237945 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/asserts.h
+	<stdexcept>
+
+1352237945 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/unix_error.h
+	<string>
+
+1353014748 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/Block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+
+1352925977 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/e7types.h
+
+1352926100 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/e7const.h
+
+1352926477 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/e7filsys.h
+	"e7types.h"
+
+1352926248 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/e7fblk.h
+	"e7types.h"
+	"e7filsys.h"
+
+1352927128 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/e7ino.h
+	"e7types.h"
+
+1352926386 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/e7dir.h
+	"e7types.h"
+
+1353014096 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/Device.cc
+	"common.h"
+	"Device.h"
+	"asserts.h"
+	"unix_error.h"
+	<fcntl.h>
+	<sys/stat.h>
+	<cstdio>
+
+1353014241 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/Device.h
+	"Block.h"
+	<map>
+
+1351890838 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/asserts.cc
+	"asserts.h"
+	"ansi.h"
+	<cstdio>
+
+1352125645 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/unix_error.cc
+	<cstring>
+	<cerrno>
+	<stdexcept>
+	"ansi.h"
+	"unix_error.h"
+
+1353014206 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/e7dump/voorbeeld.cc
+	"common.h"
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+	<ctime>
+	<cstddef>
+	<cstdio>
+	<iostream>
+	"e7types.h"
+	"e7filsys.h"
+	"e7fblk.h"
+	"e7ino.h"
+	"e7dir.h"
+	"Device.h"
+	"Block.h"
+
+1384544754 source:c:\users\hans\desktop\opdrachten\e7dump\assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1391271746 c:\users\hans\desktop\opdrachten\e7dump\assert_error.h
+	<stdexcept>
+
+1353529288 c:\users\hans\desktop\opdrachten\e7dump\ansi.h
+	"common.h"
+
+1353713824 c:\users\hans\desktop\opdrachten\e7dump\common.h
+
+1387055946 source:c:\users\hans\desktop\opdrachten\e7dump\block.cc
+	"asserts.h"
+	"endian.h"
+	"Block.h"
+
+1391271764 c:\users\hans\desktop\opdrachten\e7dump\asserts.h
+	"assert_error.h"
+
+1387055568 c:\users\hans\desktop\opdrachten\e7dump\endian.h
+
+1391117510 c:\users\hans\desktop\opdrachten\e7dump\block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+
+1355484352 c:\users\hans\desktop\opdrachten\e7dump\e7types.h
+
+1352929700 c:\users\hans\desktop\opdrachten\e7dump\e7const.h
+
+1395914286 source:c:\users\hans\desktop\opdrachten\e7dump\device.cc
+	"asserts.h"
+	"unix_error.h"
+	<fcntl.h>
+	<unistd.h>
+	<sys/stat.h>
+	<cstdio>
+	"Block.h"
+	"Device.h"
+	"e7const.h"
+
+1354097192 c:\users\hans\desktop\opdrachten\e7dump\unix_error.h
+	<stdexcept>
+	<string>
+
+1387055170 c:\users\hans\desktop\opdrachten\e7dump\device.h
+	<map>
+	"e7types.h"
+
+1396274150 source:c:\users\hans\desktop\opdrachten\e7dump\main.cc
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+	<ctime>
+	<cstddef>
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	"e7filsys.h"
+	"e7ino.h"
+	"Device.h"
+	"Block.h"
+
+1395915400 c:\users\hans\desktop\opdrachten\e7dump\e7filsys.h
+	"e7types.h"
+
+1352930728 c:\users\hans\desktop\opdrachten\e7dump\e7ino.h
+	"e7types.h"
+
+1354097108 source:c:\users\hans\desktop\opdrachten\e7dump\unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1395915401 c:\users\hans\desktop\opdrachten\e7dump\e7fblk.h
+	"e7types.h"
+	"e7filsys.h"
+
