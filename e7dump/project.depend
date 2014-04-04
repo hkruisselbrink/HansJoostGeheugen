@@ -475,3 +475,99 @@
 	"e7types.h"
 	"e7filsys.h"
 
+1384544754 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1391271746 c:\users\hans\documents\hansjoostgeheugen\e7dump\assert_error.h
+	<stdexcept>
+
+1353529288 c:\users\hans\documents\hansjoostgeheugen\e7dump\ansi.h
+	"common.h"
+
+1353713824 c:\users\hans\documents\hansjoostgeheugen\e7dump\common.h
+
+1387055946 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\block.cc
+	"asserts.h"
+	"endian.h"
+	"Block.h"
+
+1391271764 c:\users\hans\documents\hansjoostgeheugen\e7dump\asserts.h
+	"assert_error.h"
+
+1387055568 c:\users\hans\documents\hansjoostgeheugen\e7dump\endian.h
+
+1391117510 c:\users\hans\documents\hansjoostgeheugen\e7dump\block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+
+1355484352 c:\users\hans\documents\hansjoostgeheugen\e7dump\e7types.h
+
+1352929700 c:\users\hans\documents\hansjoostgeheugen\e7dump\e7const.h
+
+1395914286 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\device.cc
+	"asserts.h"
+	"unix_error.h"
+	<fcntl.h>
+	<unistd.h>
+	<sys/stat.h>
+	<cstdio>
+	"Block.h"
+	"Device.h"
+	"e7const.h"
+
+1354097192 c:\users\hans\documents\hansjoostgeheugen\e7dump\unix_error.h
+	<stdexcept>
+	<string>
+
+1387055170 c:\users\hans\documents\hansjoostgeheugen\e7dump\device.h
+	<map>
+	"e7types.h"
+
+1396615118 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\main.cc
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+	<ctime>
+	<cstddef>
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	"e7filsys.h"
+	"e7ino.h"
+	"e7dir.h"
+	"Device.h"
+	"Block.h"
+
+1395915400 c:\users\hans\documents\hansjoostgeheugen\e7dump\e7filsys.h
+	"e7types.h"
+
+1352930728 c:\users\hans\documents\hansjoostgeheugen\e7dump\e7ino.h
+	"e7types.h"
+
+1354097108 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1396602463 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\main0.cc
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+	<ctime>
+	<cstddef>
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	"e7filsys.h"
+	"e7ino.h"
+	"Device.h"
+	"Block.h"
+
+1395915401 c:\users\hans\documents\hansjoostgeheugen\e7dump\e7dir.h
+	"e7types.h"
+

@@ -32,6 +32,7 @@
 // The include files for the unix 7-th Edition Filesystem
 #include "e7filsys.h"	// the description of the information in the superblock
 #include "e7ino.h"	    // the description of the on-disk version of an inode
+#include "e7dir.h"
 
 // Our own classes
 #include "Device.h"		// the "device driver"
@@ -54,7 +55,7 @@ class MyBlock : public Block
 // Dump some information from the given "device"
 void	dump(const char *floppie)
 {
-	std::cout << "Opening device '" << floppie << "'\n";
+	std::cout << "Opening device '" << floppie << "'\n\n";
 	Device  device(floppie);
 
 	// - - - - - - - - - - -
@@ -73,110 +74,247 @@ void	dump(const char *floppie)
 	fs.s_isize = sp->getshort( offsetof(filsys, s_isize) );
 	// Filesystem size of this filesystem (in blocks)
 	fs.s_fsize = sp->getlong(  offsetof(filsys, s_fsize) );
-
-	// You can print data with a cstdio function ...
-	printf("printf     fs.s_isize=%d fs.s_fsize=%ld\n", fs.s_isize, fs.s_fsize);
-	// see also: man 3 printf
-
-	// ... or use iostream operators
-	std::cout << "std::cout  fs.s_isize=" << fs.s_isize << " fs.s_fsize=" << fs.s_fsize << std::endl;
-	// see also: boek/diktaat c++ etc.
-
-	// Convert a few other superblock attributes.
-
-	// The superblock-last-update timestamp
-	fs.s_time = sp->getlong( offsetof(filsys, s_time) );
-	printf("fs.s_time=%.24s\n", ctime(&fs.s_time) );   			// see: man 3 ctime
-
 	// The filesystem name
 	std::string  s_fname = sp->getstring( offsetof(filsys, s_fname), 6 );
 	// The filesystem pack
 	std::string  s_fpack = sp->getstring( offsetof(filsys, s_fpack), 6 );
 
-	std::cout << "fs.s_fname=" << s_fname << ", fs.s_fpack=" << s_fpack << "\n";
+   	fs.s_nfree = sp->getshort(  offsetof(filsys, s_nfree) );
+
+    fs.s_ninode = sp->getshort(  offsetof(filsys, s_ninode) );
+
+    fs.s_tinode = sp->getlong( offsetof(filsys, s_tinode) );
+
+    fs.s_flock = sp->getbyte( offsetof(filsys, s_flock) );
+
+    fs.s_ilock = sp->getbyte( offsetof(filsys, s_ilock) );
+
+    fs.s_fmod = sp->getbyte( offsetof(filsys, s_fmod) );
+
+    fs.s_ronly = sp->getbyte( offsetof(filsys, s_ronly) );
+
+    fs.s_time = sp->getlong( offsetof(filsys, s_time) );
+
+    fs.s_tfree = sp->getlong( offsetof(filsys, s_tfree) );
+
+    fs.s_tinode = sp->getshort( offsetof(filsys, s_tinode) );
+
+    fs.s_m = sp->getshort( offsetof(filsys, s_m) );
+
+    fs.s_n = sp->getshort( offsetof(filsys, s_n) );
+
+    off_x offset0 = offsetof(filsys, s_free);
+    for(int i = 0; i < NICFREE; ++i) {
+        fs.s_free[i] = sp->getlong(offset0);
+        //std::cout << fs.s_free[i] + " ";
+        offset0 += sizeof(daddr_x);
+    }
+
+    off_x offset1 = offsetof(filsys, s_inode);
+    for(int i = 0; i < NICINOD; ++i) {
+        fs.s_inode[i] = sp->getshort(offset1);
+        //std::cout << fs.s_free[i] + " ";
+        offset1 += sizeof(ino_x);
+    }
+
+
+	// ... or use iostream operators
+	std::cout << "---------------------------------------" << std::endl;
+	std::cout << "Dump of superblock on " << s_fname << "." << s_fpack << std::endl;
+	std::cout << "---------------------------------------" << std::endl;
+	std::cout << "number of blocks in i-list is: " << fs.s_isize << std::endl;
+	std::cout << "number of blocks on volume is: " << fs.s_fsize << std::endl;
+	std::cout << "number of freeblocks in free[] is: " << fs.s_nfree << " " << std::endl;
+	for(int i = 0; i < fs.s_nfree; i++) {
+        std::cout << fs.s_free[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "number of freeblocks in inode[] is: " << fs.s_ninode << " " << std::endl;
+    for(int i = 0; i < fs.s_ninode; i++) {
+        std::cout << fs.s_inode[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "freelist lock flag is ";
+    if(fs.s_flock == 0) {
+        std::cout << "not set" << std::endl;
+    } else {
+        std::cout << "set" << std::endl;
+    }
+    std::cout << "i-list lock flag is ";
+    if(fs.s_ilock == 0) {
+        std::cout << "not set" << std::endl;
+    } else {
+        std::cout << "set" << std::endl;
+    }
+    std::cout << "superblock is ";
+    if(fs.s_fmod == 0) {
+        std::cout << "not modified" << std::endl;
+    } else {
+        std::cout << "modified" << std::endl;
+    }
+    std::cout << "filesystem was ";
+    if(fs.s_ronly == 0) {
+        std::cout << "not not mounted readonly" << std::endl;
+    } else {
+        std::cout << "was mounted readonly" << std::endl;
+    }
+    printf("Last update was %.24s\n", ctime(&fs.s_time) );
+    std::cout << "total number of free blocks is: " << fs.s_tfree << std::endl;
+    std::cout << "total number of free inodes is: " << fs.s_tinode << std::endl;
+    std::cout << "interleave factors are: " << fs.s_m << " and " << fs.s_n << std::endl;
+    std::cout << "File system name is: " << s_fname << std::endl;
+    std::cout << "File system pack is: " << s_fpack << std::endl;
+    std::cout << "---------------------------------------" << std::endl;
+    std::cout << "Dump of freelist on" << s_fname << "." << s_fpack << std::endl;
+    std::cout << "---------------------------------------" << std::endl << "In superblock:" << std::endl;
+    printf("Holds %d entries:", fs.s_nfree);//DEBUG
+        std::cout << std::endl;
+    for(int i = 0; i < fs.s_nfree; i++) {
+        std::cout << fs.s_free[i] << " ";
+    }
+    std::cout << std::endl;
+
+    while (fs.s_free[0] != 0)
+	{
+		std::cout << "Fetching freeblock: " << fs.s_free[0] << std::endl;
+
+		Block  *bp = device.getBlock(fs.s_free[0]);
+
+		// Where do we start reading in this block
+		off_x  offset = 0;
+
+		// Read a new s_nfree value
+		fs.s_nfree = bp->getlong(offset);
+		offset += sizeof(daddr_x);
+		printf("Holds %d entries:", fs.s_nfree);
+        std::cout << std::endl;
+		// Copy a new table to s_free[]
+		for (int  i = 0; i < NICFREE; ++i) {
+			daddr_x addr = bp->getlong(offset);
+			fs.s_free[i] = addr;
+			offset += sizeof(daddr_x);
+			printf(" %ld", addr);
+		}
+		std::cout << std::endl;
+
+		bp->release();	// block no longer needed
+	}
+    std::cout << "---------------------------------------" << std::endl << "Inode info on floppy:" << std::endl << "---------------------------------------" << std::endl;
+    ino_x	ninode = (fs.s_isize - 2) * INOPB;
+    for (ino_x inum = 1; inum < ninode; ++inum) {
+        dinode	di;
+        Block  *ip = device.getBlock(itod(inum));
+        off_x  offset = itoo(inum) * INSIZ;
+
+        di.di_mode  = ip->getshort(offset + offsetof(dinode, di_mode));
+        di.di_nlink = ip->getshort(offset + offsetof(dinode, di_nlink));
+        di.di_uid = ip->getshort(offset + offsetof(dinode, di_uid));
+        di.di_gid = ip->getshort(offset + offsetof(dinode, di_gid));
+        di.di_atime = ip->getlong(offset + offsetof(dinode, di_atime) );
+        di.di_ctime = ip->getlong(offset + offsetof(dinode, di_ctime) );
+        di.di_mtime = ip->getlong(offset + offsetof(dinode, di_mtime) );
+
+
+        if (di.di_mode != 0)	// Is this inode being used ?
+        {
+            bool hasData =  (  ((di.di_mode & X_IFMT) == X_IFREG)		// a regular file
+						|| ((di.di_mode & X_IFMT) == X_IFDIR)		// a directory
+						);
+
+            bool isDir = (di.di_mode & X_IFMT) == X_IFDIR;
+
+            if (hasData) {
+
+                std::cout << "Inode: " << inum  << std::endl;
+                std::cout << "mode= " << di.di_mode  << std::endl;
+                std::cout << "nlink=" << di.di_nlink << " uid=" << di.di_uid  << " gid=" << di.di_gid  << std::endl;
+                // Get the file size
+                di.di_size = ip->getlong(offset + offsetof(dinode, di_size));
+                //printf("di_size=%ld ", di.di_size);//DEBUG
+                std::cout << "size=" << di.di_size;
+
+                // Convert the 13, 24-bit, blocknumbers in that inode
+                // into ordinary 32-bit daddr_x longs.
+                daddr_x  da[NADDR];
+                ip->l3tol(offset + offsetof(dinode,di_addr), da);
+                printf(" addr=");
+                    for(int  i = 0 ; i < NADDR ; ++i) {
+                        printf(" %ld", da[i]);
+                    }
+                printf("\n");
+
+                off_x size = di.di_size;
+
+                if(size > 0) {
+                    std::cout << "Direct blocks: ";
+                }
+
+                for (int  i = 0 ; (i < NADDR) && (size > 0) ; ++i)
+                {
+                    daddr_x	 addr = da[i];
+                    //printf(" %ld", addr);//DEBUG
+                    switch (i)
+                    {
+                            // NOTE: this is a non-standard 'case' (a GCC extension)
+                        case 0 ... 9:	// the direct blocks
+                            if (addr != 0) {	// not a hole?
+                               std::cout << addr << " ";
+                            }
+                            size -= DBLKSIZ;
+                            break;
+
+                        case 10:		// the top indir 1 block
+                            if (addr != 0) {	// not a hole?
+                                std::cout << std::endl << "Indirect 1 blocks: " << addr << ":";
+                            } else {
+                                size -= 128 * DBLKSIZ;
+                            }
+                            break;
+
+                        case 11:		// the top indir 2 block
+                            if (addr != 0) {	// not a hole?
+                                std::cout << std::endl << "Indirect 2 blocks: " << addr << ":";
+                            } else {
+                                size -= 128 * 128 * DBLKSIZ;
+                            }
+                            break;
+
+                        case 12:		// the top indir 3 block
+                            if (addr != 0) {	// not a hole?
+                                std::cout << std::endl << "Indirect 3 blocks: " << addr << ":";
+                            } else {
+                                size -= 128 * 128 * 128 * DBLKSIZ;
+                            }
+                            break;
+
+                        default:
+                            notreached();
+                    }
+                }
+                std::cout << std::endl;
+
+                printf("atime=%.24s\n", ctime(&di.di_atime) );
+                printf("ctime=%.24s\n", ctime(&di.di_ctime) );
+                printf("mtime=%.24s\n", ctime(&di.di_mtime) );
+
+                std::cout << "---------------------------------------" << std::endl;
+                // Register the blocks used by this inode
+                //registerBlocks(device, da, di.di_size);
+            }
+
+        }
+	}
 
 	sp->release();	// We no longer need this block
-
-
-	// - - - - - - - - - - - - -
-	// read INODE's from disk
-	// Also see: e7ino.h
-
-	// Object 'di' will hold some of that "disk-inode" data.
-	dinode	di;
-
-	// Fetch the block containing the root inode
-	Block*  ip = device.getBlock( itod(ROOTINO) );
-
-	// Determine where the bytes for the root-inode begin in this inode block
-	off_x  offset = itoo(ROOTINO) * INSIZ;  // i.e. "dino_index" * "dino_size"
-	printf("data for inode %d begins at offset %ld (expect %d)\n", ROOTINO, offset, INSIZ);
-
-	// Convert some of that raw data to our native type
-
-	// The inode type + protection flags
-	// If (di_mode == 0) then this inode is not used
-	// and the remaining attributes will be garbage.
-	di.di_mode  = ip->getshort( offset + offsetof(dinode, di_mode) );
-	printf("inode %d mode = %#o (expect 040777)\n", ROOTINO, di.di_mode);
-
-	// Verify this is a directory inode
-	if((di.di_mode & X_IFMT) == X_IFDIR) {
-		printf(AC_GREEN	"Good: it is a directory\n"	AA_RESET);
-	} else {
-		printf(AC_RED	"Oops: it is not a directory\n"	AA_RESET);
-	}
-
-	// Convert the 13, 24-bits, blocknumbers in the inode
-	// to normal 32-bit daddr_x values (only valid for DIR or REG type)
-	daddr_x  diskaddrs[NADDR];		// 13 blocknumbers
-	ip->l3tol( offset + offsetof(dinode, di_addr), diskaddrs );
-	printf("diskaddr: ");
-	for(int  i = 0 ; i < NADDR ; ++i) {
-		printf(" %ld", diskaddrs[i]);
-	}
-	printf("\n");
-
-	ip->release();	// We no longer need this block
-
-	// - - - - - - - - - -
-	// TypeCasting test
-
-	Block	*bp = device.getBlock(0);
-
-	// Now pretend it is a MyBlock instance
-	MyBlock *mbp = static_cast<MyBlock*>(bp);	// brute-force type casting
-
-	printf("compare mbp=%p with bp=%p\n", mbp, bp);	// should be the same?
-	check(mbp == bp);
-
-	// Try to use the "derived class" pointer for operations on the Block baseclass
-	printf("usage count before release is %d\n", mbp->getUsage());
-	mbp->release();
-	printf("usage count  after release is %d\n", mbp->getUsage());
 }
 
 // - - - - - - - - - -
 
-// Print sizes to verify our code is indeed binary compatible
-void	checkTypes()
-{
-	printf("Check datatypesizes:\n");
-	printf("sizeof ushort=%d (expect 2) uint=%d (expect 4) ulong=%d (expect 4)\n",
-					sizeof(ushort), sizeof(uint), sizeof(ulong));
-	printf("sizeof daddr_x=%d (expect 4)\n", sizeof(daddr_x));
-	printf("sizeof filsys=%d (expect 440)\n", sizeof(filsys));
-	printf("sizeof dinode=%d (expect %d)\n", sizeof(dinode), INSIZ);
-	printf("sizeof Block=%d (expect %d)\n", sizeof(Block),
-					DBLKSIZ + sizeof(size_t) + sizeof(void*) );
-	// If the numbers don't match, change the specs in e7types.h
-}
 
 
 // Main is just the TUI
 int  main(int argc, const char *argv[])
 {
-	checkTypes();
 	try {
 		// a given parameter or use the default ?
 		dump( (argc > 1) ? argv[1] : "floppie.img" );
