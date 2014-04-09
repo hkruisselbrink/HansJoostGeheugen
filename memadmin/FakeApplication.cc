@@ -1,6 +1,6 @@
-//#ident	"@(#)Application.cc	2.1	AKK	20110303"
-/** @file Application.cc
- * De implementatie van Application.
+//#ident	"@(#)FakeApplication.cc	2.1	AKK	20110303"
+/** @file FakeApplication.cc
+ * De implementatie van FakeApplication.
  */
 
 // Unix/Linux includes
@@ -9,7 +9,7 @@
 // Our own includes
 #include "main.h"			// common global stuff
 #include "Stopwatch.h"		// De cpu tijd meter
-#include "Application0.h"	// De pseudo applicatie
+#include "FakeApplication.h"	// De pseudo applicatie
 
 // introduce std shorthands
 using std::cout;
@@ -36,10 +36,10 @@ bool	vraagkans(int r)
 // ------------------------------------------------------
 
 
-// Initieer een "Application" die geheugen vraagt aan
+// Initieer een "FakeApplication" die geheugen vraagt aan
 // de gegeven beheerder, waarbij we de beschikking
 // hebben over 'size' eenheden geheugen.
-Application::Application(Allocator *beheerder, int size)
+FakeApplication::FakeApplication(Allocator *beheerder, int size)
 	: beheerder(beheerder), size(size)
 	, vflag(false), tflag(true)
 	, err_teller(0), oom_teller(0)
@@ -51,7 +51,7 @@ Application::Application(Allocator *beheerder, int size)
 
 
 // actie: na afloop alles netjes opruimen.
-Application::~Application()
+FakeApplication::~FakeApplication()
 {
 	vflag = false; // svp het opruimen in stilte doen
 	// zijn er nog objecten over?
@@ -62,7 +62,7 @@ Application::~Application()
 
 
 // actie: vraag om geheugen (onze versie van 'new')
-void	Application::vraagGeheugen(int omvang)
+void	FakeApplication::vraagGeheugen(int omvang)
 {
 	if (vflag) {
 		cout << "Vraag " << omvang << ", ";
@@ -112,7 +112,7 @@ void	Application::vraagGeheugen(int omvang)
 
 
 // actie: geef een gekregen gebied weer terug (onze versie van 'delete')
-void	Application::vergeetOudste()
+void	FakeApplication::vergeetOudste()
 {
 	require(! objecten.empty());	// hebben we eigenlijk wel wat ?
 	Area  *ap = objecten.front();	// het oudste gebied opzoeken
@@ -139,7 +139,7 @@ int randint(int min, int max)
 
 
 // actie: geef een gekregen gebied weer terug (onze versie van 'delete')
-void	Application::vergeetRandom()
+void	FakeApplication::vergeetRandom()
 {
 	require(! objecten.empty());	// hebben we eigenlijk wel wat ?
 
@@ -172,7 +172,7 @@ void	Application::vergeetRandom()
 
 // Deze methode doet "zomaar" wat onzin acties.
 // Bedenk zelf een andere methode die wat zinnigers doet.
-void	Application::randomscenario(int aantal, bool vflag)
+void	FakeApplication::randomscenario(int aantal, bool vflag)
 {
 	bool old_vflag = this->vflag;
 	this->vflag = vflag;	// verbose mode aan/uit
@@ -229,7 +229,7 @@ void	Application::randomscenario(int aantal, bool vflag)
 // Elke test die hieronder uitgevoerd wordt zou een 'assert' failure
 // moeten veroorzaken die de normale executie-volgorde afbreekt.
 
-void	Application::testing()
+void	FakeApplication::testing()
 {
 	Area  *ap = 0;
 
