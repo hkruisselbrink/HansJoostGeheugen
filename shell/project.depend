@@ -1,0 +1,235 @@
+# depslib dependency file v1.0
+1349183400 source:e:\school\codeblocks\besturingssystemen\shell\token.cc
+	"Token.h"
+	<cctype>
+	<cstring>
+
+1349183721 
+
+1349183527 e:\school\codeblocks\besturingssystemen\shell\token.h
+	<string>
+	<istream>
+
+1349183721 source:e:\school\codeblocks\besturingssystemen\shell\main.cc
+	"Token.h"
+	<iostream>
+	<stdlib.h>
+	<sstream>
+	<fstream>
+
+1352935402 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/shell/Token.cc
+	"Token.h"
+	<cctype>
+	<cstring>
+
+1352937722 /home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/shell/Token.h
+	<string>
+	<istream>
+
+1352937674 source:/home/akk/SCHOOL/KW2.3/BS_OS/opdrachten/shell/scanner.cc
+	"Token.h"
+	<iostream>
+	<stdlib.h>
+	<sstream>
+	<fstream>
+
+1382614679 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Command.cc
+	<iostream>
+	<cstdlib>
+	<unistd.h>
+	<limits.h>
+	<fcntl.h>
+	"asserts.h"
+	"unix_error.h"
+	"Command.h"
+
+1384641351 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/asserts.h
+	"assert_error.h"
+
+1354093592 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/unix_error.h
+	<stdexcept>
+	<string>
+
+1354277361 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Command.h
+	<string>
+	<vector>
+
+1382614717 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Pipeline.cc
+	<iostream>
+	<unistd.h>
+	<fcntl.h>
+	<signal.h>
+	"asserts.h"
+	"unix_error.h"
+	"Pipeline.h"
+
+1354279687 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Pipeline.h
+	<vector>
+	"Command.h"
+
+1384640616 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/assert_error.h
+	<stdexcept>
+
+1382614740 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Sequence.cc
+	<iostream>
+	<sys/wait.h>
+	<unistd.h>
+	<cstring>
+	"asserts.h"
+	"unix_error.h"
+	"Sequence.h"
+
+1354230927 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Sequence.h
+	<vector>
+	"Pipeline.h"
+
+1354277997 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Shell.cc
+	<signal.h>
+	"asserts.h"
+	"syntax_error.h"
+	"Shell.h"
+	"Token.h"
+
+1353410005 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/syntax_error.h
+	<stdexcept>
+	<string>
+
+1354230231 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Shell.h
+	<iostream>
+	"Sequence.h"
+	"Token.h"
+
+1354279451 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Token.h
+	<string>
+	<istream>
+
+1382615002 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/Token.cc
+	"asserts.h"
+	"Token.h"
+	<cctype>
+	<cstring>
+
+1358500946 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/main.cc
+	<stdexcept>
+	<iostream>
+	<cstdlib>
+	"ansi.h"
+	"Shell.h"
+
+1353525688 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/ansi.h
+	"common.h"
+
+1353710224 /home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/common.h
+
+1354093507 source:/home/akkersdi/SCHOOL/KW2.3/BS_OS/uitwerkingen/shell/unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1384541154 source:/home/hans/Documents/opdrachten/shell/assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1391268146 /home/hans/Documents/opdrachten/shell/assert_error.h
+	<stdexcept>
+
+1353525688 /home/hans/Documents/opdrachten/shell/ansi.h
+	"common.h"
+
+1353710224 /home/hans/Documents/opdrachten/shell/common.h
+
+1396998992 source:/home/hans/Documents/opdrachten/shell/Command.cc
+	<iostream>
+	<cstdlib>
+	<unistd.h>
+	<limits.h>
+	<fcntl.h>
+	<stdio.h>
+	<string.h>
+	<sys/wait.h>
+	"asserts.h"
+	"unix_error.h"
+	"Command.h"
+
+1391268164 /home/hans/Documents/opdrachten/shell/asserts.h
+	"assert_error.h"
+
+1354093592 /home/hans/Documents/opdrachten/shell/unix_error.h
+	<stdexcept>
+	<string>
+
+1396995284 /home/hans/Documents/opdrachten/shell/Command.h
+	<string>
+	<vector>
+
+1358500946 source:/home/hans/Documents/opdrachten/shell/main.cc
+	<stdexcept>
+	<iostream>
+	<cstdlib>
+	"ansi.h"
+	"Shell.h"
+
+1354230231 /home/hans/Documents/opdrachten/shell/Shell.h
+	<iostream>
+	"Sequence.h"
+	"Token.h"
+
+1354230927 /home/hans/Documents/opdrachten/shell/Sequence.h
+	<vector>
+	"Pipeline.h"
+
+1354279687 /home/hans/Documents/opdrachten/shell/Pipeline.h
+	<vector>
+	"Command.h"
+
+1391268030 /home/hans/Documents/opdrachten/shell/Token.h
+	<string>
+	<istream>
+
+1396995284 source:/home/hans/Documents/opdrachten/shell/Pipeline.cc
+	<iostream>
+	<unistd.h>
+	<fcntl.h>
+	<signal.h>
+	"asserts.h"
+	"unix_error.h"
+	"Pipeline.h"
+
+1382614883 source:/home/hans/Documents/opdrachten/shell/Sequence.cc
+	<iostream>
+	<sys/wait.h>
+	<unistd.h>
+	<cstring>
+	"asserts.h"
+	"unix_error.h"
+	"Sequence.h"
+
+1396991639 source:/home/hans/Documents/opdrachten/shell/Shell.cc
+	<signal.h>
+	"asserts.h"
+	"syntax_error.h"
+	"Shell.h"
+	"Token.h"
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+
+1353410005 /home/hans/Documents/opdrachten/shell/syntax_error.h
+	<stdexcept>
+	<string>
+
+1382615002 source:/home/hans/Documents/opdrachten/shell/Token.cc
+	"asserts.h"
+	"Token.h"
+	<cctype>
+	<cstring>
+
+1354093507 source:/home/hans/Documents/opdrachten/shell/unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
