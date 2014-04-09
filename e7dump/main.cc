@@ -28,6 +28,9 @@
 
 // C++/STL specific
 #include <iostream>	    // for: std::cout, std::endl
+#include <fstream>
+#include <bitset>
+using namespace std;
 
 // The include files for the unix 7-th Edition Filesystem
 #include "e7filsys.h"	// the description of the information in the superblock
@@ -48,282 +51,359 @@ class MyBlock : public Block
 };
 /* NOTE: It may not have any attributes ! */
 
+void	registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream& out);
+void	readInode(Device& device, ino_x inum, ostream& out);
 
-// - - - - - - - - - -
-
-
-// Dump some information from the given "device"
-void	dump(const char *floppie)
+// Read super-block data from the device into 'fs'.
+// We only need: s_isize, s_nfree and s_free[]
+// @param		device	The device "driver"
+// @param[out]	fs		The filsys struct to be partially filled.
+void	readSuperblock(Device& device, filsys& fs, ostream& out)
 {
-	std::cout << "Opening device '" << floppie << "'\n\n";
-	Device  device(floppie);
-
-	// - - - - - - - - - - -
-	// read SUPERBLOCK data
-	// Also see: e7filsys.h
-
-	// Object 'fs' will hold the converted data.
-	filsys	fs;
-
-	// Fetch the block containing the super-block
 	Block  *sp = device.getBlock(SUPERB);
 
-	// Convert some of the raw data to our "native" type
-
-	// Inode space size (this count includes the bootblock and the superblock!)
 	fs.s_isize = sp->getshort( offsetof(filsys, s_isize) );
-	// Filesystem size of this filesystem (in blocks)
 	fs.s_fsize = sp->getlong(  offsetof(filsys, s_fsize) );
-	// The filesystem name
-	std::string  s_fname = sp->getstring( offsetof(filsys, s_fname), 6 );
-	// The filesystem pack
-	std::string  s_fpack = sp->getstring( offsetof(filsys, s_fpack), 6 );
-
-   	fs.s_nfree = sp->getshort(  offsetof(filsys, s_nfree) );
-
+	fs.s_nfree = sp->getshort(  offsetof(filsys, s_nfree) );
     fs.s_ninode = sp->getshort(  offsetof(filsys, s_ninode) );
-
     fs.s_tinode = sp->getlong( offsetof(filsys, s_tinode) );
-
     fs.s_flock = sp->getbyte( offsetof(filsys, s_flock) );
-
     fs.s_ilock = sp->getbyte( offsetof(filsys, s_ilock) );
-
     fs.s_fmod = sp->getbyte( offsetof(filsys, s_fmod) );
-
     fs.s_ronly = sp->getbyte( offsetof(filsys, s_ronly) );
-
     fs.s_time = sp->getlong( offsetof(filsys, s_time) );
-
     fs.s_tfree = sp->getlong( offsetof(filsys, s_tfree) );
-
     fs.s_tinode = sp->getshort( offsetof(filsys, s_tinode) );
-
     fs.s_m = sp->getshort( offsetof(filsys, s_m) );
-
     fs.s_n = sp->getshort( offsetof(filsys, s_n) );
+	string  s_fname = sp->getstring( offsetof(filsys, s_fname), 6 );
+	string  s_fpack = sp->getstring( offsetof(filsys, s_fpack), 6 );
+
+	sp->release();
+
+	int fnamesize = s_fname.size();
+	for(int i = 0; i<=fnamesize;i++) {
+        fs.s_fname[i] = s_fname[i];
+	}
+
+	int fpacksize = s_fpack.size();
+	for(int i = 0; i<=fpacksize;i++) {
+        fs.s_fpack[i] = s_fpack[i];
+	}
 
     off_x offset0 = offsetof(filsys, s_free);
     for(int i = 0; i < NICFREE; ++i) {
         fs.s_free[i] = sp->getlong(offset0);
-        //std::cout << fs.s_free[i] + " ";
         offset0 += sizeof(daddr_x);
     }
 
     off_x offset1 = offsetof(filsys, s_inode);
     for(int i = 0; i < NICINOD; ++i) {
         fs.s_inode[i] = sp->getshort(offset1);
-        //std::cout << fs.s_free[i] + " ";
         offset1 += sizeof(ino_x);
     }
 
+	out << "---------------------------------------" << endl;
+	out << "Dump of superblock on " << fs.s_fname << "." << fs.s_fpack << endl;
+	out << "---------------------------------------" << endl;
+	out << "number of blocks in i-list is: " << fs.s_isize << endl;
+	out << "number of blocks on volume is: " << fs.s_fsize << endl;
+	out << "number of freeblocks in free[] is: " << fs.s_nfree << " " << endl;
 
-	// ... or use iostream operators
-	std::cout << "---------------------------------------" << std::endl;
-	std::cout << "Dump of superblock on " << s_fname << "." << s_fpack << std::endl;
-	std::cout << "---------------------------------------" << std::endl;
-	std::cout << "number of blocks in i-list is: " << fs.s_isize << std::endl;
-	std::cout << "number of blocks on volume is: " << fs.s_fsize << std::endl;
-	std::cout << "number of freeblocks in free[] is: " << fs.s_nfree << " " << std::endl;
 	for(int i = 0; i < fs.s_nfree; i++) {
-        std::cout << fs.s_free[i] << " ";
+        out << fs.s_free[i] << " ";
     }
-    std::cout << std::endl;
-    std::cout << "number of freeblocks in inode[] is: " << fs.s_ninode << " " << std::endl;
+    out << endl;
+
+    out << "number of freeblocks in inode[] is: " << fs.s_ninode << " " << endl;
     for(int i = 0; i < fs.s_ninode; i++) {
-        std::cout << fs.s_inode[i] << " ";
+        out << fs.s_inode[i] << " ";
     }
-    std::cout << std::endl;
-    std::cout << "freelist lock flag is ";
+    out << endl;
+
+    out << "freelist lock flag is ";
     if(fs.s_flock == 0) {
-        std::cout << "not set" << std::endl;
+        out << "not set" << endl;
     } else {
-        std::cout << "set" << std::endl;
+        out << "set" << endl;
     }
-    std::cout << "i-list lock flag is ";
+
+    out << "i-list lock flag is ";
     if(fs.s_ilock == 0) {
-        std::cout << "not set" << std::endl;
+        out << "not set" << endl;
     } else {
-        std::cout << "set" << std::endl;
+        out << "set" << endl;
     }
-    std::cout << "superblock is ";
+
+    out << "superblock is ";
     if(fs.s_fmod == 0) {
-        std::cout << "not modified" << std::endl;
+        out << "not modified" << endl;
     } else {
-        std::cout << "modified" << std::endl;
+        out << "modified" << endl;
     }
-    std::cout << "filesystem was ";
+
+    out << "filesystem was ";
     if(fs.s_ronly == 0) {
-        std::cout << "not not mounted readonly" << std::endl;
+        out << "not mounted readonly" << endl;
     } else {
-        std::cout << "was mounted readonly" << std::endl;
+        out << "was mounted readonly" << endl;
     }
-    printf("Last update was %.24s\n", ctime(&fs.s_time) );
-    std::cout << "total number of free blocks is: " << fs.s_tfree << std::endl;
-    std::cout << "total number of free inodes is: " << fs.s_tinode << std::endl;
-    std::cout << "interleave factors are: " << fs.s_m << " and " << fs.s_n << std::endl;
-    std::cout << "File system name is: " << s_fname << std::endl;
-    std::cout << "File system pack is: " << s_fpack << std::endl;
-    std::cout << "---------------------------------------" << std::endl;
-    std::cout << "Dump of freelist on" << s_fname << "." << s_fpack << std::endl;
-    std::cout << "---------------------------------------" << std::endl << "In superblock:" << std::endl;
-    printf("Holds %d entries:", fs.s_nfree);//DEBUG
-        std::cout << std::endl;
+
+    out << "Last update was " << ctime(&fs.s_time);
+    out << "total number of free blocks is: " << fs.s_tfree << endl;
+    out << "total number of free inodes is: " << fs.s_tinode << endl;
+    out << "interleave factors are: " << fs.s_m << " and " << fs.s_n << endl;
+    out << "File system name is: " << fs.s_fname << endl;
+    out << "File system pack is: " << fs.s_fpack << endl;
+}
+
+// Read the entire free_list.
+// Needs: fs.s_nfree, fs.s_free[]
+// @param	device		The device driver
+// @param	fs			The filesystem description
+void	readFreeList(Device& device, filsys& fs, ostream& out)
+{
+    out << "---------------------------------------" << endl;
+    out << "Dump of freelist on " << fs.s_fname << "." << fs.s_fpack << endl;
+    out << "---------------------------------------" << endl << "In superblock:" << endl;
+    out << "Holds " << fs.s_nfree << " entries:" << endl;
     for(int i = 0; i < fs.s_nfree; i++) {
-        std::cout << fs.s_free[i] << " ";
+        out << fs.s_free[i] << " ";
     }
-    std::cout << std::endl;
+    out << endl;
 
     while (fs.s_free[0] != 0)
 	{
-		std::cout << "Fetching freeblock: " << fs.s_free[0] << std::endl;
+		out << "Fetching freeblock: " << fs.s_free[0] << endl;
 
 		Block  *bp = device.getBlock(fs.s_free[0]);
 
-		// Where do we start reading in this block
 		off_x  offset = 0;
 
-		// Read a new s_nfree value
 		fs.s_nfree = bp->getlong(offset);
 		offset += sizeof(daddr_x);
-		printf("Holds %d entries:", fs.s_nfree);
-        std::cout << std::endl;
-		// Copy a new table to s_free[]
+		out << "Holds " << fs.s_nfree << " entries:" << endl;
 		for (int  i = 0; i < NICFREE; ++i) {
 			daddr_x addr = bp->getlong(offset);
 			fs.s_free[i] = addr;
 			offset += sizeof(daddr_x);
-			printf(" %ld", addr);
+			out << " " << addr;
 		}
-		std::cout << std::endl;
+		out << endl;
 
-		bp->release();	// block no longer needed
+		bp->release();
 	}
-    std::cout << "---------------------------------------" << std::endl << "Inode info on floppy:" << std::endl << "---------------------------------------" << std::endl;
+}
+
+void readInodes(Device& device, filsys& fs, ostream& out) {
+    out << "---------------------------------------" << endl << "Inode info on floppy:" << endl << "---------------------------------------" << endl;
     ino_x	ninode = (fs.s_isize - 2) * INOPB;
-    for (ino_x inum = 1; inum < ninode; ++inum) {
-        dinode	di;
-        Block  *ip = device.getBlock(itod(inum));
-        off_x  offset = itoo(inum) * INSIZ;
+    for(ino_x inum = 1; inum < ninode; ++inum) {
+        readInode(device, inum, out);
+    }
+}
 
-        di.di_mode  = ip->getshort(offset + offsetof(dinode, di_mode));
-        di.di_nlink = ip->getshort(offset + offsetof(dinode, di_nlink));
-        di.di_uid = ip->getshort(offset + offsetof(dinode, di_uid));
-        di.di_gid = ip->getshort(offset + offsetof(dinode, di_gid));
-        di.di_atime = ip->getlong(offset + offsetof(dinode, di_atime) );
-        di.di_ctime = ip->getlong(offset + offsetof(dinode, di_ctime) );
-        di.di_mtime = ip->getlong(offset + offsetof(dinode, di_mtime) );
+void	readInode(Device& device, ino_x inum, ostream& out) {
+    dinode	di;
+    Block  *ip = device.getBlock(itod(inum));
+    off_x  offset = itoo(inum) * INSIZ;
 
+    di.di_mode  = ip->getshort(offset + offsetof(dinode, di_mode));
+    di.di_nlink = ip->getshort(offset + offsetof(dinode, di_nlink));
+    di.di_uid = ip->getshort(offset + offsetof(dinode, di_uid));
+    di.di_gid = ip->getshort(offset + offsetof(dinode, di_gid));
+    di.di_atime = ip->getlong(offset + offsetof(dinode, di_atime) );
+    di.di_ctime = ip->getlong(offset + offsetof(dinode, di_ctime) );
+    di.di_mtime = ip->getlong(offset + offsetof(dinode, di_mtime) );
+    di.di_size = ip->getlong(offset + offsetof(dinode, di_size));
 
-        if (di.di_mode != 0)	// Is this inode being used ?
-        {
-            bool hasData =  (  ((di.di_mode & X_IFMT) == X_IFREG)		// a regular file
-						|| ((di.di_mode & X_IFMT) == X_IFDIR)		// a directory
-						);
+    if (di.di_mode != 0) {
+        bool hasData = (((di.di_mode & X_IFMT) == X_IFREG) || ((di.di_mode & X_IFMT) == X_IFDIR));
+        bool isDir = (di.di_mode & X_IFMT) == X_IFDIR;
+        if (hasData) {
 
-            bool isDir = (di.di_mode & X_IFMT) == X_IFDIR;
+            //PRINT DATA
+            out << "Inode: " << inum  << endl;
 
-            if (hasData) {
+            std::bitset<16> modebits(di.di_mode);
+            cout << modebits << endl;
 
-                std::cout << "Inode: " << inum  << std::endl;
-                std::cout << "mode= " << di.di_mode  << std::endl;
-                std::cout << "nlink=" << di.di_nlink << " uid=" << di.di_uid  << " gid=" << di.di_gid  << std::endl;
-                // Get the file size
-                di.di_size = ip->getlong(offset + offsetof(dinode, di_size));
-                //printf("di_size=%ld ", di.di_size);//DEBUG
-                std::cout << "size=" << di.di_size;
+            string mode = "(";
+            if(isDir) {
+                mode += "d";
+            } else {
+                mode += "-";
+            }
 
-                // Convert the 13, 24-bit, blocknumbers in that inode
-                // into ordinary 32-bit daddr_x longs.
-                daddr_x  da[NADDR];
-                ip->l3tol(offset + offsetof(dinode,di_addr), da);
-                printf(" addr=");
-                    for(int  i = 0 ; i < NADDR ; ++i) {
-                        printf(" %ld", da[i]);
+            for(int i = 8; i >= 0; i--) {
+                if(modebits[i] == 1) {
+                    int m = i%3;
+                    switch(m) {
+                    case 0:
+                        mode += "x";
+                        break;
+                    case 1:
+                        mode += "w";
+                        break;
+                    case 2:
+                        mode += "r";
+                        break;
                     }
-                printf("\n");
-
-                off_x size = di.di_size;
-
-                if(size > 0) {
-                    std::cout << "Direct blocks: ";
+                } else {
+                    mode += "-";
                 }
+            }
+            out << "mode= " << mode << ") ";
 
-                for (int  i = 0 ; (i < NADDR) && (size > 0) ; ++i)
-                {
+            int type = 0;
+            int value = 8;
+            for(int i = 15; i > 11; i--) {
+                if(modebits[i] == 1) {
+                    type += value;
+                }
+                value = value/2;
+            }
+            out << "type= " << type << endl;
+
+            out << "nlink=" << di.di_nlink << " uid=" << di.di_uid  << " gid=" << di.di_gid  << endl;
+            out << "size=" << di.di_size;
+
+            //PRINT BLOCKS
+            daddr_x  da[NADDR];
+            ip->l3tol(offset + offsetof(dinode,di_addr), da);
+            out << " addr=";
+            for(int  i = 0 ; i < NADDR ; ++i) {
+                out << " " << da[i];
+            }
+            out << endl;
+
+            //PRINT INDIRECTION
+            off_x size = di.di_size;
+            if(size > 0) {
+                out << "Direct blocks: ";
+                for (int  i = 0 ; (i < NADDR) && (size > 0) ; ++i) {
                     daddr_x	 addr = da[i];
-                    //printf(" %ld", addr);//DEBUG
-                    switch (i)
-                    {
-                            // NOTE: this is a non-standard 'case' (a GCC extension)
+                    switch (i) {
                         case 0 ... 9:	// the direct blocks
-                            if (addr != 0) {	// not a hole?
-                               std::cout << addr << " ";
+                            if (addr != 0) {
+                                out << addr << " ";
                             }
                             size -= DBLKSIZ;
                             break;
 
                         case 10:		// the top indir 1 block
-                            if (addr != 0) {	// not a hole?
-                                std::cout << std::endl << "Indirect 1 blocks: " << addr << ":";
+                            if (addr != 0) {
+                                out << endl << "Indirect 1 blocks: " << addr << ":";
+                                registerIndir(device, addr, 1, size, out);
                             } else {
                                 size -= 128 * DBLKSIZ;
                             }
                             break;
 
                         case 11:		// the top indir 2 block
-                            if (addr != 0) {	// not a hole?
-                                std::cout << std::endl << "Indirect 2 blocks: " << addr << ":";
+                            if (addr != 0) {
+                                out << endl << "Indirect 2 blocks: " << addr << ":";
+                                registerIndir(device, addr, 2, size, out);
                             } else {
                                 size -= 128 * 128 * DBLKSIZ;
                             }
                             break;
 
                         case 12:		// the top indir 3 block
-                            if (addr != 0) {	// not a hole?
-                                std::cout << std::endl << "Indirect 3 blocks: " << addr << ":";
+                            if (addr != 0) {
+                                out << endl << "Indirect 3 blocks: " << addr << ":";
+                                registerIndir(device, addr, 3, size, out);
                             } else {
                                 size -= 128 * 128 * 128 * DBLKSIZ;
                             }
                             break;
 
                         default:
-                            notreached();
+                            break;
                     }
                 }
-                std::cout << std::endl;
-
-                printf("atime=%.24s\n", ctime(&di.di_atime) );
-                printf("ctime=%.24s\n", ctime(&di.di_ctime) );
-                printf("mtime=%.24s\n", ctime(&di.di_mtime) );
-
-                std::cout << "---------------------------------------" << std::endl;
-                // Register the blocks used by this inode
-                //registerBlocks(device, da, di.di_size);
+                out << endl;
             }
-
+            out << "atime=" << ctime(&di.di_atime);
+            out << "ctime=" << ctime(&di.di_ctime);
+            out << "mtime=" << ctime(&di.di_mtime);
+            out << "---------------------------------------" << endl;
         }
-	}
-
-	sp->release();	// We no longer need this block
+    }
 }
 
-// - - - - - - - - - -
+void registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream& out) {
+    Block  *bp = device.getBlock(addr);
 
+	off_x	offset = 0;
+	for (uint  i = 0; (i < (DBLKSIZ / sizeof(daddr_x))) && (size > 0) ; ++i)
+	{
+		daddr_x  refs = bp->getlong(offset);
+		offset += sizeof(daddr_x);
 
+		switch (level)
+		{
+			case 1:		// indir 1 => data
+				if (refs >= 0) {
+					out << refs << " ";
+				}
+				size -= DBLKSIZ;
+				break;
 
-// Main is just the TUI
+			case 2:		// indir 2 => indir 1
+				if (refs != 0) {
+					out << "[" << refs << "] ";
+					registerIndir(device, refs, 1, size, out);
+				} else {
+				    out << "[" << refs << "] ";
+					size -= 128 * DBLKSIZ;
+				}
+				break;
+
+			case 3:		// indir 3 => indir 2
+				if (refs != 0) {
+					out << "[[" << refs << "]] ";
+					registerIndir(device, refs, 2, size, out);
+				} else {
+				    out << "[[" << refs << "]] ";
+					size -= 128 * 128 * DBLKSIZ;
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	bp->release();
+}
+
+void	dump(const char *floppie, ostream& out)
+{
+	Device  device(floppie);
+    filsys	fs;
+
+    readSuperblock(device, fs, out);
+    readFreeList(device, fs, out);
+    readInodes(device, fs, out);
+}
+
 int  main(int argc, const char *argv[])
 {
 	try {
-		// a given parameter or use the default ?
-		dump( (argc > 1) ? argv[1] : "floppie.img" );
+
+		ofstream file ("output.txt");
+		if(file.is_open()) {
+            dump( (argc > 1) ? argv[1] : "floppie.img" , file);
+		}
+		file.close();
+
 		return EXIT_SUCCESS;
-	} catch(const std::exception& e) {
-		std::cerr << AC_RED "OOPS: " << e.what() << AA_RESET << std::endl;
+	} catch(const exception& e) {
+		cerr << AC_RED "OOPS: " << e.what() << AA_RESET << endl;
 		return EXIT_FAILURE;
 	} catch(...) {
-		std::cerr << AC_RED "OOPS: something went wrong" AA_RESET << std::endl;
+		cerr << AC_RED "OOPS: something went wrong" AA_RESET << endl;
 		return EXIT_FAILURE;
 	}
 }

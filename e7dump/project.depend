@@ -489,7 +489,7 @@
 
 1353713824 c:\users\hans\documents\hansjoostgeheugen\e7dump\common.h
 
-1387055946 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\block.cc
+1396887380 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\block.cc
 	"asserts.h"
 	"endian.h"
 	"Block.h"
@@ -527,7 +527,7 @@
 	<map>
 	"e7types.h"
 
-1396615118 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\main.cc
+1396888682 source:c:\users\hans\documents\hansjoostgeheugen\e7dump\main.cc
 	"ansi.h"
 	"asserts.h"
 	"unix_error.h"
@@ -536,6 +536,8 @@
 	<cstdio>
 	<cstdlib>
 	<iostream>
+	<fstream>
+	<bitset>
 	"e7filsys.h"
 	"e7ino.h"
 	"e7dir.h"
