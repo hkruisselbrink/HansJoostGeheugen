@@ -1,10 +1,10 @@
 #pragma once
-#ifndef	__Application_h__
-#define	__Application_h__
-//#ident	"@(#)Application.h	2.1	AKK	20090222"
+#ifndef	__FakeApplication_h__
+#define	__FakeApplication_h__
+//#ident	"@(#)FakeApplication.h	2.1	AKK	20090222"
 
-/** @file Application.h
- *  @brief The Application class.
+/** @file FakeApplication.h
+ *  @brief The FakeApplication class.
  *  @author R.A.Akkersdijk@saxion.nl
  *  @version 2.1	2009/02/22
  */
@@ -13,9 +13,9 @@
 #include "Allocator.h"	// baseclass Allocator
 #include "Area.h"		// class Area
 
-/// @class Application
+/// @class FakeApplication
 /// De namaak applicatie/tester/performance meter class.
-class Application
+class FakeApplication
 {
 private:
 	Allocator	*beheerder;	// de huidige geheugenbeheers module
@@ -36,9 +36,9 @@ public:
 	/// die op zijn beurt de beschikking heeft over 'size' eenheden geheugen.
 	/// @param	beheerder
 	/// @param	size
-	Application(Allocator *beheerder, int size);
+	FakeApplication(Allocator *beheerder, int size);
 
-	~Application();			///< cleanup things
+	~FakeApplication();			///< cleanup things
 
 	void testing();			///< run a few test cases
 
@@ -63,5 +63,5 @@ private:
 	int		oom_teller; // Out-Of-Memory teller
 };
 
-#endif	/*Application_h*/
+#endif	/*FakeApplication_h*/
 // vim:sw=4:ai:aw:ts=4:

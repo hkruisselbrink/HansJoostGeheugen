@@ -255,7 +255,8 @@ void	waitForUserOke()
 
 
 // ===================================================================
-#include "Application.h"	// De pseudo applicatie
+// #include "Application.h"	// De pseudo applicatie
+#include "FakeApplication.h" // De neppe applicatie
 
 
 
@@ -295,7 +296,8 @@ int  main(int argc, char *argv[])
 		beheerder->setSize(size);
 
 		// ... en maak dan de pseudo-applicatie
-		Application  *mp = new Application(beheerder, size);
+		// Application  *mp = new Application(beheerder, size);
+		FakeApplication *mp = new FakeApplication(beheerder, size);
 
 		if (tflag) {    // De -t optie gezien ?
 			cerr << AC_BLUE "Testing " << beheerder->getType()
