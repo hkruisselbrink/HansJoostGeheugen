@@ -29,6 +29,7 @@
 // C++/STL specific
 #include <iostream>	    // for: std::cout, std::endl
 #include <fstream>
+#include <vector>
 #include <bitset>
 using namespace std;
 
@@ -51,7 +52,7 @@ class MyBlock : public Block
 };
 /* NOTE: It may not have any attributes ! */
 
-void	registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream& out);
+void	registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream& out, vector<daddr_x>& blokken);
 void	readInode(Device& device, ino_x inum, ostream& out);
 
 // Read super-block data from the device into 'fs'.
@@ -196,7 +197,9 @@ void	readFreeList(Device& device, filsys& fs, ostream& out)
 }
 
 void readInodes(Device& device, filsys& fs, ostream& out) {
-    out << "---------------------------------------" << endl << "Inode info on floppy:" << endl << "---------------------------------------" << endl;
+    out << "---------------------------------------" << endl
+        << "Inode info on floppy:" << endl
+        << "---------------------------------------" << endl;
     ino_x	ninode = (fs.s_isize - 2) * INOPB;
     for(ino_x inum = 1; inum < ninode; ++inum) {
         readInode(device, inum, out);
@@ -226,15 +229,12 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
             out << "Inode: " << inum  << endl;
 
             std::bitset<16> modebits(di.di_mode);
-            cout << modebits << endl;
-
             string mode = "(";
             if(isDir) {
                 mode += "d";
             } else {
                 mode += "-";
             }
-
             for(int i = 8; i >= 0; i--) {
                 if(modebits[i] == 1) {
                     int m = i%3;
@@ -278,6 +278,7 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
             out << endl;
 
             //PRINT INDIRECTION
+            vector<daddr_x> blokken;
             off_x size = di.di_size;
             if(size > 0) {
                 out << "Direct blocks: ";
@@ -287,6 +288,7 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
                         case 0 ... 9:	// the direct blocks
                             if (addr != 0) {
                                 out << addr << " ";
+                                blokken.push_back(addr);
                             }
                             size -= DBLKSIZ;
                             break;
@@ -294,7 +296,7 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
                         case 10:		// the top indir 1 block
                             if (addr != 0) {
                                 out << endl << "Indirect 1 blocks: " << addr << ":";
-                                registerIndir(device, addr, 1, size, out);
+                                registerIndir(device, addr, 1, size, out, blokken);
                             } else {
                                 size -= 128 * DBLKSIZ;
                             }
@@ -303,7 +305,7 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
                         case 11:		// the top indir 2 block
                             if (addr != 0) {
                                 out << endl << "Indirect 2 blocks: " << addr << ":";
-                                registerIndir(device, addr, 2, size, out);
+                                registerIndir(device, addr, 2, size, out, blokken);
                             } else {
                                 size -= 128 * 128 * DBLKSIZ;
                             }
@@ -312,7 +314,7 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
                         case 12:		// the top indir 3 block
                             if (addr != 0) {
                                 out << endl << "Indirect 3 blocks: " << addr << ":";
-                                registerIndir(device, addr, 3, size, out);
+                                registerIndir(device, addr, 3, size, out, blokken);
                             } else {
                                 size -= 128 * 128 * 128 * DBLKSIZ;
                             }
@@ -327,12 +329,18 @@ void	readInode(Device& device, ino_x inum, ostream& out) {
             out << "atime=" << ctime(&di.di_atime);
             out << "ctime=" << ctime(&di.di_ctime);
             out << "mtime=" << ctime(&di.di_mtime);
+
+            // if DIR then print dir contents
+            if(isDir) {
+                //print dir contents
+
+            }
             out << "---------------------------------------" << endl;
         }
     }
 }
 
-void registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream& out) {
+void registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream& out, vector<daddr_x>& blokken) {
     Block  *bp = device.getBlock(addr);
 
 	off_x	offset = 0;
@@ -346,6 +354,7 @@ void registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream
 			case 1:		// indir 1 => data
 				if (refs >= 0) {
 					out << refs << " ";
+					blokken.push_back(refs);
 				}
 				size -= DBLKSIZ;
 				break;
@@ -353,7 +362,7 @@ void registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream
 			case 2:		// indir 2 => indir 1
 				if (refs != 0) {
 					out << "[" << refs << "] ";
-					registerIndir(device, refs, 1, size, out);
+					registerIndir(device, refs, 1, size, out, blokken);
 				} else {
 				    out << "[" << refs << "] ";
 					size -= 128 * DBLKSIZ;
@@ -363,7 +372,7 @@ void registerIndir(Device& device, daddr_x addr, int level, off_x& size, ostream
 			case 3:		// indir 3 => indir 2
 				if (refs != 0) {
 					out << "[[" << refs << "]] ";
-					registerIndir(device, refs, 2, size, out);
+					registerIndir(device, refs, 2, size, out, blokken);
 				} else {
 				    out << "[[" << refs << "]] ";
 					size -= 128 * 128 * DBLKSIZ;
