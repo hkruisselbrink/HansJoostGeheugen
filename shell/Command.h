@@ -15,7 +15,7 @@ class	Command
 	private:
 
 		// The words that make up the command.
-        std::vector<std::string>	words;
+
 
 		// IO redirection information
 		std::string					input;	// name of input file
@@ -28,6 +28,7 @@ class	Command
 		Command();
 
 		/// Add a word to the command
+		std::vector<std::string>	words;
 
 		void	addWord(std::string& word);
 

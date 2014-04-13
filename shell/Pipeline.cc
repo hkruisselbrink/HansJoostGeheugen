@@ -5,6 +5,8 @@
 #include <unistd.h>		// for: pipe(), fork(), dup2(), close()
 #include <fcntl.h>		// for: O_RDONLY, O_CREAT, O_WRONLY, O_APPEND
 #include <signal.h>		// for: signal, SIG*
+#include <stdlib.h>
+#include <sys/wait.h>
 #include "asserts.h"
 #include "unix_error.h"
 #include "Pipeline.h"
@@ -47,17 +49,52 @@ void	Pipeline::execute()
 	// Also see: pipe(2), fork(2), dup2(2), dup(2), close(2), open(2), signal(2).
 	// Maybe also usefull for debugging: getpid(2), getppid(2).
 	size_t	 j = commands.size();		// for count-down
-	// TODO
+    int fd[2];
+    //pipe(fd);
+
 	for (vector<Command*>::reverse_iterator  i = commands.rbegin() ; i != commands.rend() ; ++i, --j)
 	{
 		Command  *cp = *i;
 		if (j == commands.size()) {//DEBUG
 			cerr << "Pipeline::RIGHTMOST PROCESS\n";//DEBUG
-		}//DEBUG
-		cp->execute();
-		//TODO
+
+		}
+
+		if(commands.size() > 1) {
+            if(j == 1) {
+                cp->execute();
+            } else {
+                if(pipe(fd) == -1) {
+                    cerr << "pipe failed" << endl;
+                }
+
+                switch(fork()) {
+                    case -1:
+                        cerr << "fork failed" << endl;
+                    case 0:
+                        if(dup2(fd[1], 1) < 0) {
+                            cerr << "Err dup2 in child" << endl;
+                        }
+                        close(fd[0]);
+                        close(fd[1]);
+                        break;
+                    default:
+                        if(dup2(fd[0], 0) < 0) {
+                            cerr << "Err dup2 in parent" << endl;
+                        }
+                        close(fd[0]);
+                        close(fd[1]);
+                        cp->execute();
+                        break;
+                }
+            }
+        } else if(commands.size() == 1){
+            cp->execute();
+        }
+
 		if (j == 1) {//DEBUG
 			cerr << "Pipeline::LEFTMOST PROCESS\n";//DEBUG
+			//cp->execute();
 		} else {//DEBUG
 			cerr << "Pipeline::CONNECT TO PROCESS\n";//DEBUG
 		}//DEBUG

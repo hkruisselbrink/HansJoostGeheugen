@@ -14,6 +14,12 @@ using namespace std;
 // =============================================================================
 // INITIALIZE
 
+void key_handler(int i)
+{
+    cout << i << endl;
+}
+
+
 // Initialize a Shell instance
 Shell::Shell(istream& input)
 	: input(input), tp(0)
@@ -30,6 +36,8 @@ void	Shell::main()
 {
 	// Ignore some signals
 	// TODO:
+    signal(SIGINT, SIG_IGN); // ^C
+    signal(SIGQUIT, SIG_IGN); // ^\
 	// but never these ones
 	// TODO:
 
@@ -47,8 +55,6 @@ void	Shell::main()
     printf("execl failed");*/
 
 	// The command loop
-
-
 	do {
 		cout << "SHELL: " << flush;				// prompt the user for command
 		Sequence  *sequence = parse();			// parse one line of input

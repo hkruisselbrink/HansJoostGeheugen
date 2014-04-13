@@ -233,3 +233,111 @@
 	"ansi.h"
 	"unix_error.h"
 
+1384541154 source:/home/hans/Git/HansJoostGeheugen/shell/assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1391268146 /home/hans/Git/HansJoostGeheugen/shell/assert_error.h
+	<stdexcept>
+
+1353525688 /home/hans/Git/HansJoostGeheugen/shell/ansi.h
+	"common.h"
+
+1353710224 /home/hans/Git/HansJoostGeheugen/shell/common.h
+
+1358500946 source:/home/hans/Git/HansJoostGeheugen/shell/main.cc
+	<stdexcept>
+	<iostream>
+	<cstdlib>
+	"ansi.h"
+	"Shell.h"
+
+1354230231 /home/hans/Git/HansJoostGeheugen/shell/Shell.h
+	<iostream>
+	"Sequence.h"
+	"Token.h"
+
+1354230927 /home/hans/Git/HansJoostGeheugen/shell/Sequence.h
+	<vector>
+	"Pipeline.h"
+
+1354279687 /home/hans/Git/HansJoostGeheugen/shell/Pipeline.h
+	<vector>
+	"Command.h"
+
+1397234220 /home/hans/Git/HansJoostGeheugen/shell/Command.h
+	<string>
+	<vector>
+
+1391268030 /home/hans/Git/HansJoostGeheugen/shell/Token.h
+	<string>
+	<istream>
+
+1397400224 source:/home/hans/Git/HansJoostGeheugen/shell/Pipeline.cc
+	<iostream>
+	<unistd.h>
+	<fcntl.h>
+	<signal.h>
+	<stdlib.h>
+	<sys/wait.h>
+	"asserts.h"
+	"unix_error.h"
+	"Pipeline.h"
+
+1391268164 /home/hans/Git/HansJoostGeheugen/shell/asserts.h
+	"assert_error.h"
+
+1354093592 /home/hans/Git/HansJoostGeheugen/shell/unix_error.h
+	<stdexcept>
+	<string>
+
+1397400153 source:/home/hans/Git/HansJoostGeheugen/shell/Sequence.cc
+	<iostream>
+	<sys/wait.h>
+	<unistd.h>
+	<cstring>
+	"asserts.h"
+	"unix_error.h"
+	"Sequence.h"
+
+1397032823 source:/home/hans/Git/HansJoostGeheugen/shell/Shell.cc
+	<signal.h>
+	"asserts.h"
+	"syntax_error.h"
+	"Shell.h"
+	"Token.h"
+	<stdio.h>
+	<unistd.h>
+	<stdlib.h>
+
+1353410005 /home/hans/Git/HansJoostGeheugen/shell/syntax_error.h
+	<stdexcept>
+	<string>
+
+1382615002 source:/home/hans/Git/HansJoostGeheugen/shell/Token.cc
+	"asserts.h"
+	"Token.h"
+	<cctype>
+	<cstring>
+
+1354093507 source:/home/hans/Git/HansJoostGeheugen/shell/unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1397351705 source:/home/hans/Git/HansJoostGeheugen/shell/Command.cc
+	<iostream>
+	<cstdlib>
+	<unistd.h>
+	<limits.h>
+	<fcntl.h>
+	<stdio.h>
+	<string.h>
+	<sys/wait.h>
+	"asserts.h"
+	"unix_error.h"
+	"Command.h"
+

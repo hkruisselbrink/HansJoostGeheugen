@@ -68,15 +68,8 @@ void	Command::execute()
 {
 	cerr << "Command:execute\n";//DEBUG
 
-    //Path variabele instellen
-    string env = getenv("PATH");
-    char* pPath = new char[env.size()+1];
-    pPath[env.size()]=0;
-    memcpy(pPath,env.c_str(),env.size());
-    strtok(pPath, ":");
-    strcat(pPath, {"/"});
-
-    //Working directory bepalen
+#if 0
+    //Current working directory bepalen
     long size;
     char *buf;
     char *ptr;
@@ -85,43 +78,70 @@ void	Command::execute()
 
     if ((buf = (char *)malloc((size_t)size)) != NULL) {
         ptr = getcwd(buf, (size_t)size);
-        strcat(ptr, {"/"});
+        strcat(ptr, "/");
     }
-
+#endif
     //Parameters converten
-    vector<char *> args(words.size() + 1);
+    char *args[ words.size() + 1 ];
     for(std::size_t i = 0; i != words.size(); ++i) {
         args[i] = &words[i][0];
     }
+    args[ words.size() ] = 0;
 
-    //Wordt cd aangeroepen?
-    if(strcmp(args[0], "cd") == 0) {
-        strcat(ptr, args[1]);
-        if(chdir (ptr) == -1) {
-            cerr << "chdir failed" << endl;
+    if(output.length() > 0) {
+        char *fileName = (char*)output.c_str();
+        int fd;
+
+        if(!append) {
+            fd = open(fileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
         } else {
-            return;
+            fd = open(fileName, O_APPEND | O_RDWR, S_IRUSR | S_IWUSR);
         }
-    } else if (strcmp(args[0], "cd..") == 0) {
-        if(chdir ("..") == -1) {
-            cerr << "chdir failed" << endl;
-        } else {
-            return;
-        }
-    }
+
+        dup2(fd, 1);
+        dup2(fd, 2);
+        close(fd);
+        execvp(args[0], args);
+
+	} else if (input.length() > 0) {
+
+        char *fileName = (char*)input.c_str();
+        int fd = open(fileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+        dup2(fd, 0);
+        close(fd);
+        execvp(args[0], args);
+
+	} else if(strcmp(args[0], "cd") == 0) {
+
+        if (chdir(args[1]) < 0)
+            throw unix_error("cd");
+
+    } else
+        execvp(args[0], args);
+
+#if 0
+    string epath( getenv("PATH" ) );
+    //Path variabele instellen
+    string env = getenv("PATH");
+    char* pPath = new char[env.size()+1];
+    pPath[env.size()]=0;
+    memcpy(pPath,env.c_str(),env.size());
+    strtok(pPath, ":");
+    strcat(pPath, "/");
+#endif
 
 
-    int cid = fork();
+    /*int cid = fork();
     if(cid == 0) {
-        execl(strcat(pPath, args[0]), args[0], args[1], NULL);
-        cerr << "execl failed" << endl;
+        execvp(args[0], args);
+        //execv(  strcat(pPath, args[0]) , args);
+        cerr << "execv failed" << endl;
     } else if(cid > 0) {
         wait( (int*) 0);
-        cerr << "Is completed" << endl;
+        cerr << "Command completed" << endl;
         //exit(0);
     } else
-        cerr << "fork failed" << endl;
-
+        cerr << "fork failed" << endl;*/
 
 
 	// TODO:	Handle I/O redirections.

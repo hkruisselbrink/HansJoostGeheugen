@@ -53,7 +53,16 @@ void	Sequence::execute()
 				cerr << "Sequence::FIRST PIPELINE\n";//DEBUG
 			}//DEBUG
 			// if (pp->isBuiltin()) ...
-			pp->execute();
+
+			int pid = fork();
+			if(pid == 0) {
+                pp->execute();
+			} else if (pid > 0) {
+                if(!pp->isBackground()) {
+                    wait(NULL);
+                }
+			}
+
 			// TODO
 			if (j == 1) {//DEBUG
 				cerr << "Sequence::LAST PIPELINE\n";//DEBUG
