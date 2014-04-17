@@ -263,11 +263,11 @@
 	<vector>
 	"Pipeline.h"
 
-1354279687 /home/hans/Git/HansJoostGeheugen/shell/Pipeline.h
+1397414775 /home/hans/Git/HansJoostGeheugen/shell/Pipeline.h
 	<vector>
 	"Command.h"
 
-1397234220 /home/hans/Git/HansJoostGeheugen/shell/Command.h
+1397414797 /home/hans/Git/HansJoostGeheugen/shell/Command.h
 	<string>
 	<vector>
 
@@ -275,7 +275,7 @@
 	<string>
 	<istream>
 
-1397400224 source:/home/hans/Git/HansJoostGeheugen/shell/Pipeline.cc
+1397414931 source:/home/hans/Git/HansJoostGeheugen/shell/Pipeline.cc
 	<iostream>
 	<unistd.h>
 	<fcntl.h>
@@ -293,16 +293,19 @@
 	<stdexcept>
 	<string>
 
-1397400153 source:/home/hans/Git/HansJoostGeheugen/shell/Sequence.cc
+1397414621 source:/home/hans/Git/HansJoostGeheugen/shell/Sequence.cc
 	<iostream>
 	<sys/wait.h>
 	<unistd.h>
 	<cstring>
+	<stdlib.h>
+	<stdio.h>
+	<unistd.h>
 	"asserts.h"
 	"unix_error.h"
 	"Sequence.h"
 
-1397032823 source:/home/hans/Git/HansJoostGeheugen/shell/Shell.cc
+1397411855 source:/home/hans/Git/HansJoostGeheugen/shell/Shell.cc
 	<signal.h>
 	"asserts.h"
 	"syntax_error.h"
@@ -328,7 +331,7 @@
 	"ansi.h"
 	"unix_error.h"
 
-1397351705 source:/home/hans/Git/HansJoostGeheugen/shell/Command.cc
+1397415116 source:/home/hans/Git/HansJoostGeheugen/shell/Command.cc
 	<iostream>
 	<cstdlib>
 	<unistd.h>

@@ -166,7 +166,8 @@ void	readFreeList(Device& device, filsys& fs, ostream& out)
 {
     out << "---------------------------------------" << endl;
     out << "Dump of freelist on " << fs.s_fname << "." << fs.s_fpack << endl;
-    out << "---------------------------------------" << endl << "In superblock:" << endl;
+    out << "---------------------------------------" << endl;
+    out << "In superblock:" << endl;
     out << "Holds " << fs.s_nfree << " entries:" << endl;
     for(int i = 0; i < fs.s_nfree; i++) {
         out << fs.s_free[i] << " ";

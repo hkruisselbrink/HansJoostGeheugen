@@ -5,6 +5,9 @@
 #include <sys/wait.h>		// for: wait(), WIF...(status)
 #include <unistd.h>			// for: fork(), nice()
 #include <cstring>			// for: strsignal()
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "asserts.h"
 #include "unix_error.h"
 #include "Sequence.h"
@@ -40,7 +43,7 @@ bool	Sequence::isEmpty()	const
 void	Sequence::execute()
 {
 	//cerr << "Sequence::execute\n";//DEBUG
-
+    int status;
 	// Execute each pipeline in turn.
 	// Also see: fork(2), nice(2), wait(2), WIF...(2), strsignal(3)
 	size_t  j = commands.size();			// for count-down
@@ -50,24 +53,29 @@ void	Sequence::execute()
 		if (!pp->isEmpty())
 		{
 			if (j == commands.size()) {//DEBUG
-				cerr << "Sequence::FIRST PIPELINE\n";//DEBUG
+				//cerr << "Sequence::FIRST PIPELINE\n";//DEBUG
 			}//DEBUG
 			// if (pp->isBuiltin()) ...
 
-			int pid = fork();
-			if(pid == 0) {
-                pp->execute();
-			} else if (pid > 0) {
-                if(!pp->isBackground()) {
-                    wait(NULL);
+            if (!pp->hasCd() && !pp->hasExit()) {
+                int pid = fork();
+                if(pid == 0) {
+                    pp->execute();
+                } else if (pid > 0) {
+                    if(!pp->isBackground() || j == 1) {
+                        wait(NULL);
+                    }
+
                 }
-			}
+            } else {
+                pp->execute();
+            }
 
 			// TODO
 			if (j == 1) {//DEBUG
-				cerr << "Sequence::LAST PIPELINE\n";//DEBUG
+				//cerr << "Sequence::LAST PIPELINE\n";//DEBUG
 			} else {//DEBUG
-				cerr << "Sequence::WAIT FOR PIPELINE\n";//DEBUG
+				//cerr << "Sequence::WAIT FOR PIPELINE\n";//DEBUG
 			}//DEBUG
 		}
 		// else ignore empty pipeline

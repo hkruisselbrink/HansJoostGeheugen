@@ -59,6 +59,24 @@ bool	Command::isEmpty() const
 	return input.empty() && output.empty() && words.empty();
 }
 
+bool    Command::hasCd()
+{
+    for (int i = 0 ; i < words.size() ; ++i) {
+        if(words[i] == "cd")
+            return true;
+    }
+    return false;
+}
+
+bool Command::hasExit()
+{
+    for (int i = 0 ; i < words.size() ; ++i) {
+        if(words[i] == "exit")
+            return true;
+    }
+    return false;
+}
+
 
 // ===========================================================
 
@@ -66,21 +84,6 @@ bool	Command::isEmpty() const
 // Execute a command
 void	Command::execute()
 {
-	cerr << "Command:execute\n";//DEBUG
-
-#if 0
-    //Current working directory bepalen
-    long size;
-    char *buf;
-    char *ptr;
-
-    size = pathconf(".", _PC_PATH_MAX);
-
-    if ((buf = (char *)malloc((size_t)size)) != NULL) {
-        ptr = getcwd(buf, (size_t)size);
-        strcat(ptr, "/");
-    }
-#endif
     //Parameters converten
     char *args[ words.size() + 1 ];
     for(std::size_t i = 0; i != words.size(); ++i) {
@@ -88,6 +91,10 @@ void	Command::execute()
     }
     args[ words.size() ] = 0;
 
+    //Path bepalen
+
+
+    //Command uitvoeren
     if(output.length() > 0) {
         char *fileName = (char*)output.c_str();
         int fd;
@@ -111,38 +118,29 @@ void	Command::execute()
         close(fd);
         execvp(args[0], args);
 
-	} else if(strcmp(args[0], "cd") == 0) {
-
+	} else if(hasCd()) {
         if (chdir(args[1]) < 0)
-            throw unix_error("cd");
+            cerr << "No such file or directory" << endl;
 
-    } else
-        execvp(args[0], args);
+    } else if(hasExit()) {
+        exit(0);
+    } else {
+        char* path = getenv("PATH");
+        strtok(path, ":");
+        strcat(path, "/");
+        strcat(path, args[0]);
 
-#if 0
-    string epath( getenv("PATH" ) );
-    //Path variabele instellen
-    string env = getenv("PATH");
-    char* pPath = new char[env.size()+1];
-    pPath[env.size()]=0;
-    memcpy(pPath,env.c_str(),env.size());
-    strtok(pPath, ":");
-    strcat(pPath, "/");
-#endif
+        //cerr << "PATH="<< path << endl;
+        char dir[80];
+        getcwd(dir, 80);
+        strcat(dir, "/");
+        strcat(dir, args[0]);
+        //cerr << "DIR=" << dir << endl;
 
-
-    /*int cid = fork();
-    if(cid == 0) {
-        execvp(args[0], args);
-        //execv(  strcat(pPath, args[0]) , args);
-        cerr << "execv failed" << endl;
-    } else if(cid > 0) {
-        wait( (int*) 0);
-        cerr << "Command completed" << endl;
-        //exit(0);
-    } else
-        cerr << "fork failed" << endl;*/
-
+        execv(path, args);
+        cerr << "command failed";
+        exit(0);
+    }
 
 	// TODO:	Handle I/O redirections.
 	// TODO:	Convert the words vector<string> to: array of (char*) as expected by 'execv'.

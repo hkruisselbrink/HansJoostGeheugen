@@ -38,6 +38,32 @@ bool	Pipeline::isEmpty()	const
 	return commands.empty();
 }
 
+void    my_handler(int signum)
+{
+    exit(signum);
+}
+
+bool    Pipeline::hasCd()
+{
+    for (vector<Command*>::iterator  i = commands.begin() ; i != commands.end() ; ++i) {
+        Command *cp = *i;
+        if(cp->hasCd())
+            return true;
+    }
+    return false;
+}
+
+bool Pipeline::hasExit()
+{
+    for (vector<Command*>::iterator  i = commands.begin() ; i != commands.end() ; ++i) {
+        Command *cp = *i;
+        if(cp->hasExit())
+            return true;
+    }
+    return false;
+}
+
+void (*signal (int sig, void (*func)(int)))(int);
 
 // Execute the commands in this pipeline in parallel
 void	Pipeline::execute()
@@ -48,6 +74,11 @@ void	Pipeline::execute()
 	// we must created the various child processes from the right to the left.
 	// Also see: pipe(2), fork(2), dup2(2), dup(2), close(2), open(2), signal(2).
 	// Maybe also usefull for debugging: getpid(2), getppid(2).
+    if(background == 0) {
+        signal(SIGINT, my_handler);
+        signal(SIGQUIT, my_handler);
+    }
+
 	size_t	 j = commands.size();		// for count-down
     int fd[2];
     //pipe(fd);
@@ -56,7 +87,7 @@ void	Pipeline::execute()
 	{
 		Command  *cp = *i;
 		if (j == commands.size()) {//DEBUG
-			cerr << "Pipeline::RIGHTMOST PROCESS\n";//DEBUG
+			//cerr << "Pipeline::RIGHTMOST PROCESS\n";//DEBUG
 
 		}
 
@@ -93,10 +124,10 @@ void	Pipeline::execute()
         }
 
 		if (j == 1) {//DEBUG
-			cerr << "Pipeline::LEFTMOST PROCESS\n";//DEBUG
+			//cerr << "Pipeline::LEFTMOST PROCESS\n";//DEBUG
 			//cp->execute();
 		} else {//DEBUG
-			cerr << "Pipeline::CONNECT TO PROCESS\n";//DEBUG
+			//cerr << "Pipeline::CONNECT TO PROCESS\n";//DEBUG
 		}//DEBUG
 	}
 }

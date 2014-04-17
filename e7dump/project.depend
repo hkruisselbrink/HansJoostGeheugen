@@ -573,3 +573,88 @@
 1395915401 c:\users\hans\documents\hansjoostgeheugen\e7dump\e7dir.h
 	"e7types.h"
 
+1397028507 source:/home/hans/Git/HansJoostGeheugen/e7dump/assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/assert_error.h
+	<stdexcept>
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/ansi.h
+	"common.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/common.h
+
+1397028507 source:/home/hans/Git/HansJoostGeheugen/e7dump/Block.cc
+	"asserts.h"
+	"endian.h"
+	"Block.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/asserts.h
+	"assert_error.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/endian.h
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/Block.h
+	<string>
+	"e7types.h"
+	"e7const.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/e7types.h
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/e7const.h
+
+1397028507 source:/home/hans/Git/HansJoostGeheugen/e7dump/Device.cc
+	"asserts.h"
+	"unix_error.h"
+	<fcntl.h>
+	<unistd.h>
+	<sys/stat.h>
+	<cstdio>
+	"Block.h"
+	"Device.h"
+	"e7const.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/unix_error.h
+	<stdexcept>
+	<string>
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/Device.h
+	<map>
+	"e7types.h"
+
+1397576513 source:/home/hans/Git/HansJoostGeheugen/e7dump/main.cc
+	"ansi.h"
+	"asserts.h"
+	"unix_error.h"
+	<ctime>
+	<cstddef>
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<vector>
+	<bitset>
+	"e7filsys.h"
+	"e7ino.h"
+	"e7dir.h"
+	"Device.h"
+	"Block.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/e7filsys.h
+	"e7types.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/e7ino.h
+	"e7types.h"
+
+1397028507 /home/hans/Git/HansJoostGeheugen/e7dump/e7dir.h
+	"e7types.h"
+
+1397028507 source:/home/hans/Git/HansJoostGeheugen/e7dump/unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+

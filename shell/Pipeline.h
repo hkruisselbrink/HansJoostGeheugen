@@ -37,6 +37,8 @@ class	Pipeline
 
 		// Set to true if this is a background pipeline
 		bool					background;
+		bool                    cdCommand;
+		bool                    exitCommand;
 
 	public:
 
@@ -65,6 +67,8 @@ class	Pipeline
 		/// Subsequent processes will be interconnected to each other
 		/// via pipes (See: unix manual: pipe(2))
 		void	execute();
+		bool    hasCd();
+		bool    hasExit();
 
 		// TODO: Add any other methods you need
 };

@@ -15,12 +15,14 @@ class	Command
 	private:
 
 		// The words that make up the command.
-
+		std::vector<std::string>	words;
 
 		// IO redirection information
 		std::string					input;	// name of input file
 		std::string					output;	// name of output file
 		bool						append;	// use output append mode
+		bool                        cdCommand;
+		bool                        exitCommand;
 
 	public:
 
@@ -28,8 +30,6 @@ class	Command
 		Command();
 
 		/// Add a word to the command
-		std::vector<std::string>	words;
-
 		void	addWord(std::string& word);
 
 		/// Set the name of the standard input file
@@ -52,6 +52,8 @@ class	Command
 
 		/// Is this an do-nothing-at-all command?
 		bool	isEmpty()	const;
+		bool    hasCd();
+		bool    hasExit();
 
 
 		/// Execute the command.
