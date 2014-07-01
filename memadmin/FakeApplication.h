@@ -47,6 +47,9 @@ public:
 	/// @param	vflag	true=vertel wat er allemaal gebeurt (kost wel performance)
 	void randomscenario(int aantal, bool vflag);
 
+	// voer een minder random scenario uit(webbrowserish)
+	void minderRandomScenario(int aantal, bool vflag);
+
 	//
 	// voeg hier straks je eigen scenario(s) toe
 	//
@@ -57,6 +60,7 @@ private:
 	void	vraagGeheugen(int omvang);
 	void	vergeetOudste();
 	void	vergeetRandom();
+	int kiesServlet(int nummer);
 
 	// for statistics
 	int		err_teller; // Errors teller

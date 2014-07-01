@@ -17,7 +17,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-tcbv" />
+				<Option parameters="-Nv" />
 				<Compiler>
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
@@ -25,6 +25,7 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
+					<Add option="-pg -lgmon" />
 					<Add option="-pg" />
 				</Linker>
 			</Target>
@@ -41,6 +42,8 @@
 		<Unit filename="Area.h" />
 		<Unit filename="BestFit.cc" />
 		<Unit filename="BestFit.h" />
+		<Unit filename="FakeApplication.cc" />
+		<Unit filename="FakeApplication.h" />
 		<Unit filename="FirstFit.cc" />
 		<Unit filename="FirstFit.h" />
 		<Unit filename="FirstFit2.cc" />

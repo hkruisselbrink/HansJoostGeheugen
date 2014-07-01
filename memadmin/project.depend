@@ -483,3 +483,158 @@
 	<stdexcept>
 	<string>
 
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\allocator.cc
+	"main.h"
+	"Allocator.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\main.h
+	<list>
+	<iostream>
+	"asserts.h"
+	"ansi.h"
+	"Area.h"
+	"Allocator.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\asserts.h
+	"assert_error.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\assert_error.h
+	<stdexcept>
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\ansi.h
+	"common.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\common.h
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\area.h
+	<iostream>
+	"asserts.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\allocator.h
+	"Area.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\application.cc
+	<cstdlib>
+	"main.h"
+	"Stopwatch.h"
+	"Application.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\stopwatch.h
+	<sys/resource.h>
+	<sys/times.h>
+	<times.h>
+	<time.h>
+	<sys/time.h>
+	<windows.h>
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\application.h
+	"Allocator.h"
+	"Area.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\area.cc
+	"asserts.h"
+	"Area.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\assert_error.cc
+	"assert_error.h"
+	"ansi.h"
+	<string>
+	<sstream>
+
+1398427605 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\bestfit.cc
+	"main.h"
+	"BestFit.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\bestfit.h
+	"Fitter.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\fitter.h
+	"main.h"
+	"Allocator.h"
+
+1399203810 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\fakeapplication.cc
+	<cstdlib>
+	"main.h"
+	"Stopwatch.h"
+	"FakeApplication.h"
+
+1399203650 c:\users\joost\documents\hansjoostgeheugen\memadmin\fakeapplication.h
+	"Allocator.h"
+	"Area.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\firstfit.cc
+	"FirstFit.h"
+	"ansi.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\firstfit.h
+	"Fitter.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\firstfit2.cc
+	"FirstFit2.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\firstfit2.h
+	"FirstFit.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\fitter.cc
+	<cmath>
+	"ansi.h"
+	"Fitter.h"
+
+1397993087 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\main.cc
+	<ctime>
+	<csignal>
+	<cstdlib>
+	<getopt.h>
+	<unistd.h>
+	<process.h>
+	"ansi.h"
+	"main.h"
+	"RandomFit.h"
+	"FirstFit.h"
+	"FirstFit2.h"
+	"NextFit.h"
+	"NextFit2.h"
+	"BestFit.h"
+	<windows.h>
+	"FakeApplication.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\randomfit.h
+	"Allocator.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\nextfit.h
+	"Fitter.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\nextfit2.h
+	"NextFit.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\nextfit.cc
+	"main.h"
+	"NextFit.h"
+	"ansi.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\nextfit2.cc
+	"NextFit2.h"
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\randomfit.cc
+	"main.h"
+	"RandomFit.h"
+	<cstdlib>
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\stopwatch.cc
+	<iostream>
+	<cstdio>
+	"asserts.h"
+	"Stopwatch.h"
+	<unistd.h>
+	<time.h>
+
+1397811160 source:c:\users\joost\documents\hansjoostgeheugen\memadmin\unix_error.cc
+	<cstring>
+	<cerrno>
+	"ansi.h"
+	"unix_error.h"
+
+1397811160 c:\users\joost\documents\hansjoostgeheugen\memadmin\unix_error.h
+	<stdexcept>
+	<string>
+
